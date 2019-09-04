@@ -5,11 +5,11 @@ Application VetCheck Repository
 
 Helpful php links:
 
-	(https://www.php.net/manual/en/index.php)
-	[https://www.w3schools.com/php/]
-	[https://www.geeksforgeeks.org/php/]
-	[https://www.youtube.com/playlist?list=PL0eyrZgxdwhwBToawjm9faF1ixePexft-]
-	[https://www.youtube.com/watch?v=9gEPiIoAHo8]
+	https://www.php.net/manual/en/index.php
+	https://www.w3schools.com/php/
+	https://www.geeksforgeeks.org/php/
+	https://www.youtube.com/playlist?list=PL0eyrZgxdwhwBToawjm9faF1ixePexft-
+	https://www.youtube.com/watch?v=9gEPiIoAHo8
 
 Link to Install and configure Apache 2.4 and PHP 7 on Windows:
 https://danielarancibia.wordpress.com/2015/09/27/installing-apache-2-4-and-php-7-for-development-on-windows/
