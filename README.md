@@ -5,7 +5,7 @@ Application VetCheck Repository
 
 Helpful php links:
 
-	[https://www.php.net/manual/en/index.php]
+	(https://www.php.net/manual/en/index.php)
 	[https://www.w3schools.com/php/]
 	[https://www.geeksforgeeks.org/php/]
 	[https://www.youtube.com/playlist?list=PL0eyrZgxdwhwBToawjm9faF1ixePexft-]
