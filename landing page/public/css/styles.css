@@ -47,3 +47,36 @@ img {
 .navbar {
     z-index: 9999;
 }
+
+.nav-link {
+    border-bottom: 3px solid transparent;
+}
+
+.dropdown-toggle {
+    border-bottom: 3px solid transparent;
+}
+
+.dropdown-toggle::after {
+    border: none;
+    margin-left: 0;
+    vertical-align: 0;
+}
+
+.nav-link::after {
+    display: block;
+    content: "";
+    transform: scaleX(0);
+    border-bottom: 3px solid #000;
+    transition: transform 300ms ease-in-out 0s;
+    margin-top: -10.8px;
+    position: relative;
+    top: 12px;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+.dropdown-caret {
+    font-size: 12px;
+}
