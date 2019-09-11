@@ -5,8 +5,12 @@ body {
 }
 
 img {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100vw;
     height: 100vh;
+    z-index: -9999;
 }
 
 .slideshow {
@@ -15,7 +19,7 @@ img {
 
 .heading {
     position: absolute;
-    z-index: 9999;
+    z-index: 9998;
     width: 100vw;
     height: calc(100vh - 30%);
     top: 30%;
@@ -32,4 +36,8 @@ img {
 
 .heading-sm h1 {
     font-size: 120px;
+}
+
+.navbar {
+    z-index: 9999;
 }
