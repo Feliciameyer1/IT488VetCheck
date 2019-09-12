@@ -38,7 +38,7 @@
             $_SESSION['pets'] = $pets;
             header("Location: ../index.php");
         } else {
-            header("Location: ../signin.php");
+            header("Location: ../signin.php?signinusucessfull");
         }
     } catch(MongoDB\Driver\Exception\Exception $e) {
         die('error'.$e);
