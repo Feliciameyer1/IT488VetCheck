@@ -21,9 +21,17 @@
             $email = $row[0]->email;
             $firstname = $row[0]->firstname;
             $lastname = $row[0]->lastname;
+            $address = $row[0]->address;
+            $city = $row[0]->city;
+            $state = $row[0]->state;
+            $zip = $row[0]->zip;
             $_SESSION['email'] = $email;
             $_SESSION['firstname'] = $firstname;
             $_SESSION['lastname'] = $lastname;
+            $_SESSION['address'] = $address;
+            $_SESSION['city'] = $city;
+            $_SESSION['state'] = $state;
+            $_SESSION['zip'] = $zip;
             header("Location: ../index.php");
         } else {
             header("Location: ../signin.php");
