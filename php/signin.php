@@ -18,8 +18,12 @@
         $row = $res->toArray();
 
         if($row) {
-            $user = $row[0]->email;
-            $_SESSION['email'] = $user;
+            $email = $row[0]->email;
+            $firstname = $row[0]->firstname;
+            $lastname = $row[0]->lastname;
+            $_SESSION['email'] = $email;
+            $_SESSION['firstname'] = $firstname;
+            $_SESSION['lastname'] = $lastname;
             header("Location: ../index.php");
         } else {
             header("Location: ../signin.php");
