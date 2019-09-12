@@ -1,42 +1,11 @@
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Sign Up</title>
-</head>
-<body>
-<header>
-<h1>Welcome to VetCheck</h1>
-</header>
-<h2>Please fill out the form below to create your VetCheck Account</h2>
-<form name="sign-up" action="php/SignUp.php" method="post">
-<input type="text" name="Fname" placeholder="First Name">
-<input type="text" name="Lname" placeholder="Last Name"><br>
-<input type="text" name="Address" placeholder="Street Address">
-<input type="text" name="City" placeholder="City"><br>
-<input type="text" name="State" placeholder="State">
-<input type="text" name="Zip" placeholder="Zip Code">
-<p>I am a:</p><br>
-<input type="radio" name="Role" value="Pet Owner" checked>Pet Owner<br>
-<input type="radio" name="Role" value="Veterinarian">Veterinarian<br>
-<input type="email" name="Email" placeholder="Email Address">
-<input type="password" name="password" placeholder="Password"><br>
-<input type="reset">
-<input type="submit" name="signUp-submit" value="Submit">
 
-
-</form>
-</body>
-</html>
--->
 
 <?php 
     include_once('header.php');
 ?>
     <div class="container body">
         <h2 class="text-center">Signup</h2>
-        <form action="php/signin.php" method="POST">
+        <form action="php/signup.php" method="POST">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="firstname">First Name</label>
@@ -50,6 +19,18 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" class="form-control" id="email" name="email" placeholder="example@email.com" required>
+            </div>
+             <div class="form-group">
+                <label for="address">Street Address</label>
+                <input type="text" class="form-control" id="adress" name="address" placeholder="1234 cherry lane" required>
+            </div>
+             <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Your city name" required>
+            </div>
+             <div class="form-group">
+                <label for="zip">Zip Code</label>
+                <input type="text" class="form-control" id="zip" name="zip" placeholder="12345" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
