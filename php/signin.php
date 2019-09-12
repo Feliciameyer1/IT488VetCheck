@@ -18,6 +18,7 @@
         $row = $res->toArray();
 
         if($row) {
+            $id = $row[0]->_id;
             $email = $row[0]->email;
             $firstname = $row[0]->firstname;
             $lastname = $row[0]->lastname;
@@ -25,6 +26,8 @@
             $city = $row[0]->city;
             $state = $row[0]->state;
             $zip = $row[0]->zip;
+            $pets = $row[0]->pets;
+            $_SESSION['_id'] = $id;
             $_SESSION['email'] = $email;
             $_SESSION['firstname'] = $firstname;
             $_SESSION['lastname'] = $lastname;
@@ -32,6 +35,7 @@
             $_SESSION['city'] = $city;
             $_SESSION['state'] = $state;
             $_SESSION['zip'] = $zip;
+            $_SESSION['pets'] = $pets;
             header("Location: ../index.php");
         } else {
             header("Location: ../signin.php");

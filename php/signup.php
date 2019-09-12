@@ -91,7 +91,8 @@
         'city' => $city,
         'state' => $state,
         'zip' => $zip,
-        'password' => $password
+        'password' => $password,
+        'pets' => []
     ];
 
     $userExists = false;
