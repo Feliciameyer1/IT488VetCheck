@@ -11,7 +11,6 @@ $bulk = new MongoDB\Driver\BulkWrite;
 
    
    
-  
 
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
@@ -24,29 +23,16 @@ $bulk = new MongoDB\Driver\BulkWrite;
   
 
 
-
    $user = [
         '_id' => new MongoDB\BSON\ObjectID,
         'firstname' => $firstname,
         'lastname' => $lastname,
-        'email' => $email,
-
-        'password' => $password,
-        'address' => $Address,
-        'city' => $city,
-        'state' => $state,
-        'zip' => $zip,
-       
-
+        'email' => $email,   
         'address' => $address,
         'city' => $city,
         'state' => $state,
         'zip' => $zip,
-
-     
-
-        'password' => $password,
-        'pets' => []
+        'password' => $password
 
     ];
     
@@ -72,7 +58,7 @@ $bulk = new MongoDB\Driver\BulkWrite;
             header("Location: ../signup.php?error=userExits");
         } else {
             $res = $mng->executeBulkWrite('vetcheck.users', $bulk);
-          
+            header("Location: ../signin.php?signupsuccess");
         }
     } catch(MongoDB\Driver\Exception\Exception $e) {
         die('error'.$e);
