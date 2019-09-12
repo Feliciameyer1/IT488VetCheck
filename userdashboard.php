@@ -19,11 +19,11 @@
                     <p>Pets: <br />
                         <?php 
                             foreach($_SESSION['pets'] as $pet) {
-                                echo "Name: {$pet['name']}<br />
-                                Type: {$pet['type']}<br />
-                                Breed: {$pet['breed']}<br />
-                                Gender: {$pet['gender']}<br />
-                                Age: {$pet['age']}<br /><br />";
+                                echo "Name: {$pet->{'name'}}<br />
+                                Type: {$pet->{'type'}}<br />
+                                Breed: {$pet->{'breed'}}<br />
+                                Gender: {$pet->{'gender'}}<br />
+                                Age: {$pet->{'age'}}<br /><br />";
                             }
                         ?>
                     </p>
