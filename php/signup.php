@@ -68,7 +68,7 @@ $bulk = new MongoDB\Driver\BulkWrite;
             header("Location: ../signup.php?error=userExits");
         } else {
             $res = $mng->executeBulkWrite('vetcheck.users', $bulk);
-            header("Location: ../signin.php");
+          
         }
     } catch(MongoDB\Driver\Exception\Exception $e) {
         die('error'.$e);
