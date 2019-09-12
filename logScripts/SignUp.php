@@ -16,7 +16,7 @@ if(isset($_POST['signUp-submit'])){
     $number    = preg_match('@[0-9]@', $password);
     $specialChars = preg_match('@[^\w]@', $password);
     //creates a connection with the database
-    $client = new MongoDB\Client("mongodb+srv://vetchecksiteuser:p@ssw0rd1!@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
+    $client = new MongoDB\Client("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
   // specifys the Mongodb collection we will be accessing
     $collection= $client->VetCheck;    
    
