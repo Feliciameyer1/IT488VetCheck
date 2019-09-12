@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,34 +28,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Pricing</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown <span class="dropdown-caret">&#9660</span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./signup.php">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown <span class="dropdown-caret">&#9660</span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
+                        <?php if(isset($_SESSION['email'])) : ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <?php echo $_SESSION['email'] ?> <span class="dropdown-caret">&#9660</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="php/signout.php">Signout</a>
+                                </div>
+                            </li>
+                        <?php else :?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./signup.php">Sign Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./signin.php">Sign In</a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>

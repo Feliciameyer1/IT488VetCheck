@@ -1,4 +1,4 @@
-<?php 
+<?php
     include_once('header.php');
 ?>
     <div class="heading heading-lg d-none d-lg-block">
@@ -28,7 +28,7 @@
                 <h2>What Is VetCheck?</h2>
             </div>
             <div class="card-body">
-                <h4 class="card-title">Special title treatment</h4>
+                <h4 class="card-title">What Is VetCheck?</h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
             </div>
         </div>
