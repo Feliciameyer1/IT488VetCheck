@@ -10,6 +10,7 @@ body {
     padding: 0;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 img {
@@ -96,4 +97,8 @@ img {
 
 .btn {
     font-size: 1.5rem;
+}
+
+.container.body {
+    margin-top: 56px;
 }

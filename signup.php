@@ -1,3 +1,36 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sign Up</title>
+</head>
+<body>
+<header>
+<h1>Welcome to VetCheck</h1>
+</header>
+<h2>Please fill out the form below to create your VetCheck Account</h2>
+<form name="sign-up" action="php/SignUp.php" method="post">
+<input type="text" name="Fname" placeholder="First Name">
+<input type="text" name="Lname" placeholder="Last Name"><br>
+<input type="text" name="Address" placeholder="Street Address">
+<input type="text" name="City" placeholder="City"><br>
+<input type="text" name="State" placeholder="State">
+<input type="text" name="Zip" placeholder="Zip Code">
+<p>I am a:</p><br>
+<input type="radio" name="Role" value="Pet Owner" checked>Pet Owner<br>
+<input type="radio" name="Role" value="Veterinarian">Veterinarian<br>
+<input type="email" name="Email" placeholder="Email Address">
+<input type="password" name="password" placeholder="Password"><br>
+<input type="reset">
+<input type="submit" name="signUp-submit" value="Submit">
+
+
+</form>
+</body>
+</html>
+-->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,7 +50,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="./index.php">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Features</a>
@@ -38,7 +71,7 @@
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="./SignUp.html">Sign Up</a>
+                            <a class="nav-link" href="./signup.php">Sign Up</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Login</a>
@@ -57,49 +90,31 @@
                 </div>
             </div>
         </nav>
-        <div class="heading heading-lg d-none d-lg-block">
-            <h1>VetCheck</h1>
-            <a href="#content2" class="btn btn-primary">More Info</a>
-        </div>
-        <div class="heading heading-md d-none d-md-block d-lg-none">
-            <h1>VetCheck</h1>
-            <a href="#content2" class="btn btn-primary">More Info</a>
-        </div>
-        <div class="heading heading-sm d-block d-md-none">
-            <h1>Vet</h1>
-            <h1>Check</h1>
-            <a href="#content2" class="btn btn-primary">More Info</a>
-        </div>
-        <div class="slideshow">
-            <img class="image" src="./imgs/cat1.jpg">
-            <img class="image" src="./imgs/dog1.jpg">
-            <img class="image" src="./imgs/cat2.jpg">
-            <img class="image" src="./imgs/dog2.jpg">
-            <img class="image" src="./imgs/cat3.jpg">
-            <img class="image" src="./imgs/dog3.jpg">
-        </div>
-        <div class="content2" id="content2">
-            <div class="card">
-                <div class="card-header">
-                    <h2>What Is VetCheck?</h2>
+        <div class="container body">
+            <h2 class="text-center">Signup</h2>
+            <form action="php/createUser.php" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="firstname">First Name</label>
+                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="John" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Doe" required>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h4 class="card-title">Special title treatment</h4>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="example@email.com" required>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-header text-right">
-                    <h2>Why Should I Use VetCheck?</h2>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="************" required>
                 </div>
-                <div class="card-body text-right">
-                    <h4 class="card-title">Special title treatment</h4>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <div class="text-center">
+                    <button type="submit" value="submit" class="btn btn-primary">Sign Up</button>
                 </div>
-                <div class="card-header text-center">
-                    <h2>Sign Up Now!</h2>
-                </div>
-            </div>
+            </form>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
