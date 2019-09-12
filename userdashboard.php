@@ -2,14 +2,21 @@
     include_once('header.php');
 ?>
     <div class="container body">
-        <div class="card">
-            <h2 class="card-title text-center"><?php echo "Hello, {$_SESSION['firstname']} {$_SESSION['lastname']}"; ?></h2>
-            <div class="card-body">
-                <p class="card-text">Email: <?php echo $_SESSION['email'] ?></p>
-                <p class="card-text">Address: <?php echo $_SESSION['address'] ?></p>
-                <p class="card-text">City: <?php echo $_SESSION['city'] ?></p>
-                <p class="card-text">State: <?php echo $_SESSION['state'] ?></p>
-                <p class="card-text">Zip: <?php echo $_SESSION['zip'] ?></p>
+        <div class="row">
+            <div class="col-3">
+                <h2 class="text-center">User Links</h2>
+                <a href="#" class="btn btn-secondary">Add Pet</a>
+                <a href="#" class="btn btn-secondary mt-2">Request Appointment</a>
+            </div>
+            <div class="col-9">
+                <h2 class="text-center"><?php echo "Hello, {$_SESSION['firstname']} {$_SESSION['lastname']}"; ?></h2>
+                <div class="container">
+                    <p>Email: <?php echo $_SESSION['email'] ?></p>
+                    <p>Address: <?php echo $_SESSION['address'] ?></p>
+                    <p>City: <?php echo $_SESSION['city'] ?></p>
+                    <p>State: <?php echo $_SESSION['state'] ?></p>
+                    <p>Zip: <?php echo $_SESSION['zip'] ?></p>
+                </div>
             </div>
         </div>
     </div>
