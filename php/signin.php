@@ -16,9 +16,14 @@
         $res = $mng->executeQuery('vetcheck.users', $query);
 
         $row = $res->toArray();
-        $user = $row[0]->email;
-        $_SESSION['email'] = $user;
-        header("Location: ../index.php");
+
+        if($row) {
+            $user = $row[0]->email;
+            $_SESSION['email'] = $user;
+            header("Location: ../index.php");
+        } else {
+            header("Location: ../signin.php");
+        }
     } catch(MongoDB\Driver\Exception\Exception $e) {
         die('error'.$e);
     }
