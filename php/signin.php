@@ -36,7 +36,7 @@
             $_SESSION['state'] = $state;
             $_SESSION['zip'] = $zip;
             $_SESSION['pets'] = $pets;
-            header("Location: ../index.php");
+            header("Location: ../userdashboard.php");
         } else {
             header("Location: ../signin.php");
         }
