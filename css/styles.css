@@ -94,10 +94,14 @@ img {
     height: 50%!important;
 }
 
-.btn {
+.btn-primary {
     font-size: 1.5rem;
 }
 
 .container.body {
     margin-top: 56px;
+}
+
+.btn-secondary {
+    width: 100%;
 }

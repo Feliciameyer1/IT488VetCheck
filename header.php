@@ -27,7 +27,7 @@
                         <?php if(isset($_SESSION['email'])) : ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <?php echo $_SESSION['email'] ?> <span class="dropdown-caret">&#9660</span>
+                                    <?php echo "{$_SESSION['firstname']} {$_SESSION['lastname']}"; ?> <span class="dropdown-caret">&#9660</span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="userdashboard.php">My Account</a>

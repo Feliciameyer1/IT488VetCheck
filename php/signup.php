@@ -8,11 +8,11 @@ $bulk = new MongoDB\Driver\BulkWrite;
 
 
 
-<<<<<<< HEAD
+
    
    
   
-=======
+
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
@@ -23,27 +23,31 @@ $bulk = new MongoDB\Driver\BulkWrite;
     $password = $_POST['password'];
   
 
->>>>>>> b4a42172a32fe81423fe9df1797d20f408cc9183
+
 
    $user = [
         '_id' => new MongoDB\BSON\ObjectID,
         'firstname' => $firstname,
         'lastname' => $lastname,
         'email' => $email,
-<<<<<<< HEAD
+
         'password' => $password,
         'address' => $Address,
         'city' => $city,
         'state' => $state,
         'zip' => $zip,
-        'role' => $role,
-=======
+       
+
         'address' => $address,
         'city' => $city,
         'state' => $state,
         'zip' => $zip,
-        'password' => $password
->>>>>>> b4a42172a32fe81423fe9df1797d20f408cc9183
+
+     
+
+        'password' => $password,
+        'pets' => []
+
     ];
     
    
