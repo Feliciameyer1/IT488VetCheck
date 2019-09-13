@@ -105,7 +105,6 @@
                 <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="************" required>
             </div>
             <div id="PasswordConfirmErr">
-            <p id="match" class="invalid">Passwords must match</p>
             
             </div>
             <div class="text-center">
@@ -184,11 +183,9 @@ passwordRepeat.onfocus = function() {
     //validate matching passwords    
   passwordRepeat.onKeyUp=function(){
 	 if(myInput.value == passwordRepeat.value){
-		 match.classList.remove("invalid");
-		    match.classList.add("valid"); 
+		 document.getElementById("PasswordConfirmErr").innerHTML="Passwords match";
 	 } else{
-		  match.classList.remove("valid");
-		    match.classList.add("invalid");
+		 document.getElementById("PasswordConfirmErr").innerHTML="Passwords do not match";
 		  }
 	 }
 	 
