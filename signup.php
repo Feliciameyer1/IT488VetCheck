@@ -113,6 +113,7 @@
         </form>
     </div>
     <script>
+    //validation works but need to edit to hide the box once the page loads
 var myInput = document.getElementById("password");
 var passwordRepeat= document.getElementById("passwordConfirm");
 var letter = document.getElementById("letter");
@@ -123,6 +124,7 @@ var match = document.getElementById("match");
 // When the user clicks on the password field, show the message box
 myInput.onfocus = function() {
   document.getElementById("PasswordError").style.display = "block";
+  
   }
 
 // When the user clicks outside of the password field, hide the message box
@@ -175,9 +177,11 @@ passwordRepeat.onfocus = function() {
   passwordRepeat.oninput=function(){
 	 if(myInput.value == passwordRepeat.value){
 		 document.getElementById("PasswordConfirmErr").innerHTML="Passwords match";
+		 document.getElementById("PasswordConfirmErr").style.color='green';
 		 return true;
 	 } else{
 		 document.getElementById("PasswordConfirmErr").innerHTML="Passwords do not match";
+		 document.getElementById("PasswordConfirmErr").style.color='red';
 		 return false;
 		  }
 	 }
