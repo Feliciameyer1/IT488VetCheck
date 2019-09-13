@@ -181,11 +181,13 @@ passwordRepeat.onfocus = function() {
     document.getElementById("PasswordConfirmErr").style.display = "none";
   }
     //validate matching passwords    
-  passwordRepeat.onKeyUp=function(){
+  passwordRepeat.oninput=function(){
 	 if(myInput.value == passwordRepeat.value){
 		 document.getElementById("PasswordConfirmErr").innerHTML="Passwords match";
+		 return true;
 	 } else{
 		 document.getElementById("PasswordConfirmErr").innerHTML="Passwords do not match";
+		 return false;
 		  }
 	 }
 	 
