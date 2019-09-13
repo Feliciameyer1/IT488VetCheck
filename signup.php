@@ -104,6 +104,10 @@
                 <label for="passwordComfirm">Confirm Password</label>
                 <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="************" required>
             </div>
+            <div id="PasswordConfirmErr">
+            <p id="match" class="invalid">Passwords must match</p>
+            
+            </div>
             <div class="text-center">
                 <button type="submit" value="submit" class="btn btn-primary">Sign Up</button>
             </div>
@@ -111,10 +115,12 @@
     </div>
     <script>
 var myInput = document.getElementById("password");
+var passwordRepeat= document.getElementById("passwordConfirm");
 var letter = document.getElementById("letter");
 var capital = document.getElementById("capital");
 var number = document.getElementById("number");
 var length = document.getElementById("length");
+var match = document.getElementById("match");
 
 // When the user clicks on the password field, show the message box
 myInput.onfocus = function() {
@@ -167,6 +173,27 @@ myInput.onkeyup = function() {
     length.classList.add("invalid");
   }
 }
+//When the user clicks on the password field, show the message box
+passwordRepeat.onfocus = function() {
+  document.getElementById("PasswordConfirmErr").style.display = "block";
+//When the user clicks outside of the password field, hide the message box
+}
+  passwordRepeat.onblur = function() {
+    document.getElementById("PasswordConfirmErr").style.display = "none";
+  }
+    //validate matching passwords    
+  passwordRepeat.onKeyUp=function(){
+	 if(myInput.value == passwordRepeat.value){
+		 match.classList.remove("invalid");
+		    match.classList.add("valid"); 
+	 } else{
+		  match.classList.remove("valid");
+		    match.classList.add("invalid");
+		  }
+	 }
+	 
+	  
+  
 </script>
 <?php
     include_once('footer.php');
