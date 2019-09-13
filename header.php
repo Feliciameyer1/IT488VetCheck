@@ -31,7 +31,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="userdashboard.php">My Account</a>
-                                    <a class="dropdown-item" href="php/signout.php">Signout</a>
+                                    <a class="dropdown-item" href="php/signout.php">Sign Out</a>
                                 </div>
                             </li>
                         <?php else :?>

@@ -17,13 +17,14 @@
                     <p>State: <?php echo $_SESSION['state'] ?></p>
                     <p>Zip: <?php echo $_SESSION['zip'] ?></p>
                     <p>Pets: <br />
-                        <?php 
+                        <?php
                             foreach($_SESSION['pets'] as $pet) {
-                                echo "Name: {$pet->{'name'}}<br />
-                                Type: {$pet->{'type'}}<br />
-                                Breed: {$pet->{'breed'}}<br />
-                                Gender: {$pet->{'gender'}}<br />
-                                Age: {$pet->{'age'}}<br /><br />";
+                                $data = json_decode(json_encode($pet), true);
+                                echo "Name: {$data['name']}<br />
+                                Type: {$data['type']}<br />
+                                Breed: {$data['breed']}<br />
+                                Gender: {$data['gender']}<br />
+                                Age: {$data['age']}<br /><br />";
                             }
                         ?>
                     </p>

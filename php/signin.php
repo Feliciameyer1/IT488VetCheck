@@ -36,11 +36,13 @@
             $_SESSION['state'] = $state;
             $_SESSION['zip'] = $zip;
             $_SESSION['pets'] = $pets;
+
          
             header("Location: ../index.php");
         } else {
             
             header("Location: ../signin.php");
+
         }
     } catch(MongoDB\Driver\Exception\Exception $e) {
         die('error'.$e);
