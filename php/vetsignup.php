@@ -1,8 +1,7 @@
 <?php
     $bulk = new MongoDB\Driver\BulkWrite;
 
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $address = $_POST['address'];
     $city = $_POST['city'];
@@ -13,15 +12,14 @@
 
     $user = [
         '_id' => new MongoDB\BSON\ObjectID,
-        'firstname' => $firstname,
-        'lastname' => $lastname,
+        'practicename' => $name,
         'email' => $email,
         'address' => $address,
         'city' => $city,
         'state' => $state,
         'zip' => $zip,
         'password' => $hashed_password,
-        'pets' => []
+        'role' => 'Veterinarian'
     ];
 
     $userExists = false;
