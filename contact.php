@@ -2,56 +2,25 @@
     include_once('header.php');
 ?>
 	<div class="container body">
-		<form name="contactform" method="POST" action="php/contact.php">
-			<table width="450px">
-				<tr>
-					<td valign="top">
-						<label for="first_name">First Name *</label>
-					</td>
-					<td valign="top">
-						<input  type="text" name="first_name" maxlength="50" size="30">
-					</td>
-				</tr>
-				<tr>
-					<td valign="top"">
-						<label for="last_name">Last Name *</label>
-					</td>
-					<td valign="top">
-						<input  type="text" name="last_name" maxlength="50" size="30">
-					</td>
-				</tr>
-				<tr>
-					<td valign="top">
-						<label for="email">Email Address *</label>
-					</td>
-					<td valign="top">
-						<input  type="text" name="email" maxlength="80" size="30">
-					</td>
-				</tr>
-				<tr>
-					<td valign="top">
-						<label for="telephone">Telephone Number</label>
-					</td>
-					<td valign="top">
-						<input  type="text" name="telephone" maxlength="30" size="30">
-					</td>
-				</tr>
-				<tr>
-					<td valign="top">
-						<label for="comments">Comments *</label>
-					</td>
-					<td valign="top">
-						<textarea  name="comments" maxlength="1000" cols="25" rows="6"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" style="text-align:center">
-						<input type="submit" value="Submit">   <a href="http://www.freecontactform.com/email_form.php">Email Form</a>
-					</td>
-				</tr>
-			</table>
-		</form>
-	</div>
+        <h2 class="text-center">Contact Us</h2>
+        <form action="php/contact.php" method="POST">
+			<div class="form-group">
+                <label for="password">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="example@email.com" required>
+            </div>
+			<div class="form-group">
+				<label for="message">Message</label>
+				<textarea class="form-control" id="message" name="message" rows="4"></textarea>
+			</div>
+            <div class="text-center">
+                <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
 <?php
     include_once('footer.php');
 ?>
