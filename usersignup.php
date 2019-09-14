@@ -120,7 +120,7 @@ var letter = document.getElementById("letter");
 var capital = document.getElementById("capital");
 var number = document.getElementById("number");
 var length = document.getElementById("length");
-var match = document.getElementById("match");
+
 // When the user clicks on the password field, show the message box
 myInput.onfocus = function() {
   document.getElementById("PasswordError").style.display = "block";
