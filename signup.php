@@ -94,12 +94,12 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="************" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
             </div>
             <div id="PasswordError">
- 			 <h3>Password must contain the following:</h3>
-  			<p id="letter">A <b>lowercase</b> letter</p>
-  			<p id="capital">A <b>capital (uppercase)</b> letter</p>
-  			<p id="number">A <b>number</b></p>
-  			<p id="length">Minimum <b>8 characters</b></p>
-			</div>
+              <h6>Password must contain the following:</h6>
+                <span id="letter">a <b>lowercase</b> letter,</span>
+                <span id="capital">an <b>uppercase</b> letter,</span>
+                <span id="number">a <b>number</b>,</span>
+                <span id="length">at least <b>8 characters</b></span>
+            </div>
              <div class="form-group">
                 <label for="passwordComfirm">Confirm Password</label>
                 <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="************" required>

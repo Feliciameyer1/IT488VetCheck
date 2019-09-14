@@ -105,13 +105,12 @@ img {
 .btn-secondary {
     width: 100%;
 }
+
 #PasswordError {
   display:none;
-  background: #f1f1f1;
   color: black;
   position: relative;
-  padding: 20px;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 #letter{
 	color:red;
