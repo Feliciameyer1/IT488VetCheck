@@ -3,7 +3,7 @@
 ?>
     <div class="container body">
         <h2 class="text-center">Signup</h2>
-        <form action="php/signup.php" method="POST">
+        <form onsubmit="return passwordRepeat.oninput(this)" action="php/signup.php" method="POST">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="firstname">First Name</label>
