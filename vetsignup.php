@@ -107,14 +107,13 @@
         </form>
     </div>
     <script>
-    //validation works but need to edit to hide the box once the page loads
+   
 var myInput = document.getElementById("password");
 var passwordRepeat= document.getElementById("passwordConfirm");
 var letter = document.getElementById("letter");
 var capital = document.getElementById("capital");
 var number = document.getElementById("number");
 var length = document.getElementById("length");
-var match = document.getElementById("match");
 // When the user clicks on the password field, show the message box
 myInput.onfocus = function() {
   document.getElementById("PasswordError").style.display = "block";
