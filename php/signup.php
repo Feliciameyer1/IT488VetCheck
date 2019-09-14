@@ -9,6 +9,7 @@
     $state = $_POST['state'];
     $zip = $_POST['zip'];
     $password = $_POST['password'];
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
     $user = [
         '_id' => new MongoDB\BSON\ObjectID,
@@ -19,7 +20,7 @@
         'city' => $city,
         'state' => $state,
         'zip' => $zip,
-        'password' => $password,
+        'password' => $hashed_password,
         'pets' => []
     ];
 
