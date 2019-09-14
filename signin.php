@@ -16,6 +16,9 @@
                 <button type="submit" value="submit" class="btn btn-primary">Sign In</button>
             </div>
         </form>
+        <div class="text-center mt-3">
+            <a href="./forgotpassword.php" class="btn btn-warning">Forgot Password?</a>
+        </div>
     </div>
 <?php
     include_once('footer.php');
