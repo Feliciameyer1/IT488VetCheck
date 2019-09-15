@@ -13,7 +13,7 @@
                 <input type="text" class="form-control" id="type" name="type" placeholder="Dog" required>
             </div>
             <div class="form-group">
-                <label for="type">Breed</label>
+                <label for="breed">Breed</label>
                 <input type="text" class="form-control" id="breed" name="breed" placeholder="Poodle" required>
             </div>
             <div class="form-group">
