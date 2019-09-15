@@ -1,12 +1,13 @@
 <?php
     include_once('header.php');
 ?>
+  
 <div class="container body">
     <h2 class="text-center">Request Appointment</h2>
     <form action="php/requestAppointment.php" method="POST">
         <div class="form-group">
             <label for="date">Date</label>
-            <input type="text" class="form-control" id="date" name="date" required>
+            <input type="text" class="form-control" id="datepicker" name=datepicker" required>
         </div>
         <div class="form-group">
             <label for="time">Time</label>
@@ -18,6 +19,13 @@
         </div>
     </form>
 </div>
+<script>
+$( "#datepicker" ).datepicker({
+	inline: true
+});
+
+
+</script>
 <?php
     include_once('footer.php');
 ?>
