@@ -6,7 +6,7 @@
             <div class="col-3">
                 <h2 class="text-center">User Links</h2>
                 <a href="./addpet.php" class="btn btn-secondary">Add Pet</a>
-                <a href="#" class="btn btn-secondary mt-2">Request Appointment</a>
+                <a href="./requestAppointment.php" class="btn btn-secondary mt-2">Request Appointment</a>
             </div>
             <div class="col-9">
                 <h2 class="text-center"><?php echo "Hello, {$_SESSION['firstname']} {$_SESSION['lastname']}"; ?></h2>
