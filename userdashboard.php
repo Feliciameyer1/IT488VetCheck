@@ -29,6 +29,18 @@
                                 }
                             ?>
                         </p>
+                        <p>Appointments: <br />
+                            <?php
+                                foreach($_SESSION['appointments'] as $appointment) {
+                                    $data = json_decode(json_encode($appointment), true);
+                                    echo "Vet: {$data['vet']['practicename']}<br />
+                                    Location: {$data['vet']['address']}, {$data['vet']['city']}, {$data['vet']['state']}, {$data['vet']['zip']}<br />
+                                    Date: {$data['date']}<br />
+                                    Time: {$data['time']}<br />
+                                    Reason for Visit: {$data['reasonForVisit']}<br />";
+                                }
+                            ?>
+                        </p>
                     </div>
                 </div>
             <?php else: ?>
@@ -44,6 +56,18 @@
                         <p>City: <?php echo $_SESSION['city'] ?></p>
                         <p>State: <?php echo $_SESSION['state'] ?></p>
                         <p>Zip: <?php echo $_SESSION['zip'] ?></p>
+                        <p>Appointments: <br />
+                            <?php
+                                foreach($_SESSION['appointments'] as $appointment) {
+                                    $data = json_decode(json_encode($appointment), true);
+                                    echo "Patient: {$data['patient']['firstname']} {$data['patient']['lastname']}<br />
+                                    Contact: {$data['patient']['email']}<br />
+                                    Date: {$data['date']}<br />
+                                    Time: {$data['time']}<br />
+                                    Reason for Visit: {$data['reasonForVisit']}<br />";
+                                }
+                            ?>
+                        </p>
                     </div>
                 </div>
             <?php endif; ?>

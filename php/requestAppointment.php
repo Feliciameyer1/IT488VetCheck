@@ -2,6 +2,7 @@
     session_start();
 
     $bulk = new MongoDB\Driver\BulkWrite;
+    $bulk2 = new MongoDB\Driver\BulkWrite;
 
     $vet = $_POST['vet'];
     $patientId = $_SESSION['_id'];
@@ -40,9 +41,12 @@
             'reasonForVisit' => $reasonforvisit,
         ];
 
-        $bulk->insert($appointment);
+        $bulk->update(array("_id" => $patientId), array('$push' => array("appointments" => $appointment)));
+        $res = $mng->executeBulkWrite('vetcheck.users', $bulk);
 
-        $res = $mng->executeBulkWrite('vetcheck.appointments', $bulk);
+        $bulk2->update(array("_id" => $vetInfo->_id), array('$push' => array("appointments" => $appointment)));
+        $res = $mng->executeBulkWrite('vetcheck.users', $bulk2);
+
         array_push($_SESSION['appointments'], $appointment);
         header("Location: ../userdashboard.php");
     } catch(MongoDB\Driver\Exception\Exception $e) {

@@ -22,7 +22,8 @@
         'zip' => $zip,
         'password' => $hashed_password,
         'pets' => [],
-        'role' => 'Patient'
+        'role' => 'Patient',
+        'appointments' => []
     ];
 
     $userExists = false;

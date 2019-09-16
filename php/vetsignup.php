@@ -19,7 +19,8 @@
         'state' => $state,
         'zip' => $zip,
         'password' => $hashed_password,
-        'role' => 'Veterinarian'
+        'role' => 'Veterinarian',
+        'appointments' => []
     ];
 
     $userExists = false;
