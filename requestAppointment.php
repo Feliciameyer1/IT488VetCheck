@@ -51,9 +51,9 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="reasonforvisit">Reason For Visit</label>
-            <input type="text" class="form-control" id="reasonforvisit" name="reasonforvisit">
-        </div>
+			<label for="reasonforvisit">Reason for Visit</label>
+			<textarea class="form-control" id="reasonforvisit" name="reasonforvisit" rows="4"></textarea>
+		</div>
         <div class="text-center">
             <button type="submit" value="submit" class="btn btn-primary">Submit Request</button>
         </div>
