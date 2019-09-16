@@ -9,6 +9,7 @@
     $patientId = $_SESSION['_id'];
     $date = $_POST['datepicker'];
     $time = $_POST['time'];
+    $pet = $_POST['pet'];
     $reasonforvisit = $_POST['reasonforvisit'];
     
     try {
@@ -39,6 +40,7 @@
             'patient' => $patientInfo,
             'date' => $date,
             'time' => $time,
+            'pet' => $pet,
             'reasonForVisit' => $reasonforvisit,
         ];
 

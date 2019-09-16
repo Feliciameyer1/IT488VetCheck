@@ -39,6 +39,18 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="pet">Pet Visiting</label>
+            <select id="pet" name="pet" class="form-control">
+                <option value="-1">Select a pet</option>
+                <?php
+                    foreach($_SESSION['pets'] as $pet) {
+                        $data = json_decode(json_encode($pet), true);
+                        echo "<option value=\"".$data['name']."\">".$data['name']."</option>";
+                    }
+                ?>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="reasonforvisit">Reason For Visit</label>
             <input type="text" class="form-control" id="reasonforvisit" name="reasonforvisit">
         </div>
