@@ -20,7 +20,7 @@
                 if($row[0]->role == 'Veterinarian') {
                     $id = $row[0]->_id;
                     $email = $row[0]->email;
-                    $name = $row[0]->practicename;
+                    $practicename = $row[0]->practicename;
                     $address = $row[0]->address;
                     $city = $row[0]->city;
                     $state = $row[0]->state;

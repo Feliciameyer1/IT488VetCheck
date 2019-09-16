@@ -27,7 +27,7 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <?php if(isset($_SESSION['email'])) : ?>
+                        <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'Patient'): ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <?php echo "{$_SESSION['firstname']} {$_SESSION['lastname']}"; ?> <span class="dropdown-caret">&#9660</span>
@@ -37,7 +37,17 @@
                                     <a class="dropdown-item" href="php/signout.php">Sign Out</a>
                                 </div>
                             </li>
-                        <?php else :?>
+                        <?php elseif(isset($_SESSION['role']) && $_SESSION['role'] == 'Veterinarian'): ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <?php echo $_SESSION['practicename'] ?> <span class="dropdown-caret">&#9660</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="userdashboard.php">My Account</a>
+                                    <a class="dropdown-item" href="php/signout.php">Sign Out</a>
+                                </div>
+                            </li>
+                        <?php else: ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="./signup.php">Sign Up</a>
                             </li>
