@@ -3,6 +3,7 @@
 
     $bulk = new MongoDB\Driver\BulkWrite;
     $bulk2 = new MongoDB\Driver\BulkWrite;
+    $bulk3 = new MongoDB\Driver\BulkWrite;
 
     $vet = $_POST['vet'];
     $patientId = $_SESSION['_id'];
@@ -41,11 +42,14 @@
             'reasonForVisit' => $reasonforvisit,
         ];
 
-        $bulk->update(array("_id" => $patientId), array('$push' => array("appointments" => $appointment)));
-        $res = $mng->executeBulkWrite('vetcheck.users', $bulk);
+        $bulk->insert($appointment);
+        $res = $mng->executeBulkWrite('vetcheck.appointments', $bulk);
 
-        $bulk2->update(array("_id" => $vetInfo->_id), array('$push' => array("appointments" => $appointment)));
+        $bulk2->update(array("_id" => $patientId), array('$push' => array("appointments" => $appointment)));
         $res = $mng->executeBulkWrite('vetcheck.users', $bulk2);
+
+        $bulk3->update(array("_id" => $vetInfo->_id), array('$push' => array("appointments" => $appointment)));
+        $res = $mng->executeBulkWrite('vetcheck.users', $bulk3);
 
         array_push($_SESSION['appointments'], $appointment);
         header("Location: ../userdashboard.php");
