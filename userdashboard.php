@@ -42,6 +42,16 @@
                                 }
                             ?>
                         </p>
+                        <p>Messages: <br />
+                            <?php
+                                foreach($_SESSION['messages'] as $message) {
+                                    $data = json_decode(json_encode($message), true);
+                                    echo "Vet: {$data['vet']['practicename']}<br />
+                                    Location: {$data['vet']['address']}, {$data['vet']['city']}, {$data['vet']['state']}, {$data['vet']['zip']}<br />
+                                    Message: {$data['message']}<br />";
+                                }
+                            ?>
+                        </p>
                     </div>
                 </div>
             <?php else: ?>
@@ -66,6 +76,16 @@
                                     Date: {$data['date']}<br />
                                     Time: {$data['time']}<br />
                                     Reason for Visit: {$data['reasonForVisit']}<br />";
+                                }
+                            ?>
+                        </p>
+                        <p>Messages: <br />
+                            <?php
+                                foreach($_SESSION['messages'] as $message) {
+                                    $data = json_decode(json_encode($message), true);
+                                    echo "Patient: {$data['patient']['firstname']} {$data['patient']['lastname']}<br />
+                                    Contact: {$data['patient']['email']}<br />
+                                    Message: {$data['message']}<br />";
                                 }
                             ?>
                         </p>

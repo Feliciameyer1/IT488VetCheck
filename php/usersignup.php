@@ -23,7 +23,8 @@
         'password' => $hashed_password,
         'pets' => [],
         'role' => 'Patient',
-        'appointments' => []
+        'appointments' => [],
+        'messages' => []
     ];
 
     $userExists = false;

@@ -27,6 +27,7 @@
                     $zip = $row[0]->zip;
                     $role = $row[0]->role;
                     $appointments = $row[0]->appointments;
+                    $messages = $row[0]->messages;
                     $_SESSION['_id'] = $id;
                     $_SESSION['email'] = $email;
                     $_SESSION['practicename'] = $practicename;
@@ -36,6 +37,7 @@
                     $_SESSION['zip'] = $zip;
                     $_SESSION['role'] = $role;
                     $_SESSION['appointments'] = $appointments;
+                    $_SESSION['messages'] = $messages;
                 } elseif ($row[0]->role == 'Patient') {
                     $id = $row[0]->_id;
                     $email = $row[0]->email;
@@ -48,6 +50,7 @@
                     $pets = $row[0]->pets;
                     $role = $row[0]->role;
                     $appointments = $row[0]->appointments;
+                    $messages = $row[0]->messages;
                     $_SESSION['_id'] = $id;
                     $_SESSION['email'] = $email;
                     $_SESSION['firstname'] = $firstname;
@@ -59,6 +62,7 @@
                     $_SESSION['pets'] = $pets;
                     $_SESSION['role'] = $role;
                     $_SESSION['appointments'] = $appointments;
+                    $_SESSION['messages'] = $messages;
                 }
 
                 header("Location: ../index.php");

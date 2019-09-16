@@ -20,7 +20,8 @@
         'zip' => $zip,
         'password' => $hashed_password,
         'role' => 'Veterinarian',
-        'appointments' => []
+        'appointments' => [],
+        'messages' => []
     ];
 
     $userExists = false;
