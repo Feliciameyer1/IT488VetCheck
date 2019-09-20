@@ -5,13 +5,19 @@
         <h2 class="text-center">View Pets</h2>
         <?php
             foreach($_SESSION['pets'] as $pet) {
-                $data = json_decode(json_encode($pet), true);
-                echo "Name: {$data['name']}<br />
-                Type: {$data['type']}<br />
-                Breed: {$data['breed']}<br />
-                Gender: {$data['gender']}<br />
-                Age: {$data['age']}<br /><br />";
-            }
+                $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
+                $query = new MongoDB\Driver\Query([]);
+                $rows = $mng->executeQuery('vetcheck.pets', $query);
+                foreach($rows as $row) {
+                    if($row->_id == $pet) {
+                        echo "Name: {$row->name}<br />
+                        Type: {$row->type}<br />
+                        Breed: {$row->breed}<br />
+                        Gender: {$row->gender}<br />
+                        Age: {$row->age}<br /><br />";
+                    }
+                }
+            } 
         ?>
     </div>
 <?php

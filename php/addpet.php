@@ -17,8 +17,7 @@
         $rows = $mng->executeQuery('vetcheck.users', $query);
         foreach($rows as $row) {
             if($row->_id == $ownerId) {
-                $ownerInfo = $row;
-                $ownerInfo->password = null;
+                $ownerInfo = $row->_id;
             }
         }
 
@@ -32,10 +31,12 @@
             'owner' => $ownerInfo
         ];
 
+        $petRef = $pet['_id'];
+
         $bulk->insert($pet);
         $res = $mng->executeBulkWrite('vetcheck.pets', $bulk);
 
-        $bulk2->update(array("_id" => $ownerId), array('$push' => array("pets" => $pet)));
+        $bulk2->update(array("_id" => $ownerId), array('$push' => array("pets" => $petRef)));
         $res = $mng->executeBulkWrite('vetcheck.users', $bulk2);
 
         array_push($_SESSION['pets'], $pet);
