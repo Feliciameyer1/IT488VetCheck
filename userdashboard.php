@@ -7,6 +7,7 @@
                 <div class="col-3">
                     <h2 class="text-center">User Links</h2>
                     <a href="./addpet.php" class="btn btn-secondary">Add Pet</a>
+                    <a href="./pets.php" class="btn btn-secondary mt-2">View Pets</a>
                     <a href="./requestAppointment.php" class="btn btn-secondary mt-2">Request Appointment</a>
                     <a href="./contact.php" class="btn btn-secondary mt-2">Contact Vet Clinic</a>
                 </div>
@@ -18,18 +19,6 @@
                         <p>City: <?php echo $_SESSION['city'] ?></p>
                         <p>State: <?php echo $_SESSION['state'] ?></p>
                         <p>Zip: <?php echo $_SESSION['zip'] ?></p>
-                        <p>Pets: <br />
-                            <?php
-                                foreach($_SESSION['pets'] as $pet) {
-                                    $data = json_decode(json_encode($pet), true);
-                                    echo "Name: {$data['name']}<br />
-                                    Type: {$data['type']}<br />
-                                    Breed: {$data['breed']}<br />
-                                    Gender: {$data['gender']}<br />
-                                    Age: {$data['age']}<br /><br />";
-                                }
-                            ?>
-                        </p>
                         <p>Appointments: <br />
                             <?php
                                 foreach($_SESSION['appointments'] as $appointment) {

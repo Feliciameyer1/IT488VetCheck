@@ -14,7 +14,8 @@
                     Contact: {$data['patient']['email']}<br />
                     Date: {$data['date']}<br />
                     Time: {$data['time']}<br />
-                    Reason for Visit: {$data['reasonForVisit']}<br /><br />";
+                    Reason for Visit: {$data['reasonForVisit']}<br />
+                    <a href=\"./updateappointment.php?{$data['_id']['$oid']}\">Update Appointment</a><br /><br />";
                 }
             }
         ?>
