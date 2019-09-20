@@ -8,22 +8,6 @@
             <label for="appointment">Appointment</label>
             <input type="text" class="form-control" id="appointment" name="appointment" value="<?php echo $_SERVER['QUERY_STRING'] ?>" required>
         </div>
-        <div class="form-group d-none">
-            <label for="pet">Pet</label>
-            <select id="pet" name="pet" class="form-control">
-                <?php
-                    $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
-                    $query = new MongoDB\Driver\Query([]);
-                    $rows = $mng->executeQuery('vetcheck.appointments', $query);
-                    foreach($rows as $row) {
-                        if($row->_id == $_SERVER['QUERY_STRING']) {
-                            $data = json_decode(json_encode($row), true);
-                            echo "<option value=\"".$data['pet']['_id']['$oid']."\">".$data['pet']['name']."</option>";
-                        }
-                    }
-                ?>
-            </select>
-        </div>
         <div class="form-group">
             <label for="shots">Shots</label>
             <select id="shots" name="shots" class="form-control">

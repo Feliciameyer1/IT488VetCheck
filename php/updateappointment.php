@@ -5,7 +5,6 @@
     $bulk2 = new MongoDB\Driver\BulkWrite;
 
     $appointmentId = $_POST['appointment'];
-    $petId = $_POST['pet'];
     $shots = $_POST['shots'];
     $notes = $_POST['notes'];
 
@@ -17,11 +16,12 @@
         foreach($rows as $row) {
             if($row->_id == $appointmentId) {
                 $appointmentId = $row->_id;
+                $aptPet = $row->pet;
             }
         }
 
-        $bulk->update(array("_id" => $appointmentId), array('$push' => array("shots" => $shots)));
-        $res = $mng->executeBulkWrite('vetcheck.appointments', $bulk);
+        $bulk->update(array("_id" => $aptPet), array('$push' => array("shots" => $shots)));
+        $res = $mng->executeBulkWrite('vetcheck.pets', $bulk);
         
         $bulk2->update(array("_id" => $appointmentId), array('$push' => array("notes" => $notes)));
         $res = $mng->executeBulkWrite('vetcheck.appointments', $bulk2);
