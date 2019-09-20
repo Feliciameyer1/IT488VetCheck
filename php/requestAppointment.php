@@ -63,10 +63,10 @@
         $bulk2->update(array("_id" => $patientId), array('$push' => array("appointments" => $aptRef)));
         $res = $mng->executeBulkWrite('vetcheck.users', $bulk2);
 
-        $bulk3->update(array("_id" => $vetInfo->_id), array('$push' => array("appointments" => $aptRef)));
+        $bulk3->update(array("_id" => $vetInfo), array('$push' => array("appointments" => $aptRef)));
         $res = $mng->executeBulkWrite('vetcheck.users', $bulk3);
 
-        $bulk4->update(array("_id" => $petInfo->_id), array('$push' => array("appointments" => $aptRef)));
+        $bulk4->update(array("_id" => $petInfo), array('$push' => array("appointments" => $aptRef)));
         $res = $mng->executeBulkWrite('vetcheck.pets', $bulk4);
 
         array_push($_SESSION['appointments'], $appointment);

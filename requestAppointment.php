@@ -44,8 +44,14 @@
                 <option value="-1">Select a pet</option>
                 <?php
                     foreach($_SESSION['pets'] as $pet) {
-                        $data = json_decode(json_encode($pet), true);
-                        echo "<option value=\"".$data['_id']['$oid']."\">".$data['name']."</option>";
+                        $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
+                        $query = new MongoDB\Driver\Query([]);
+                        $rows = $mng->executeQuery('vetcheck.pets', $query);
+                        foreach($rows as $row) {
+                            if($row->_id == $pet) {
+                                echo "<option value=\"".$row->_id."\">".$row->name."</option>";
+                            }
+                        }
                     }
                 ?>
             </select>
