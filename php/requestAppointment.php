@@ -51,7 +51,6 @@
             'time' => $time,
             'pet' => $petInfo,
             'reasonForVisit' => $reasonforvisit,
-            'shots' => [],
             'notes' => []
         ];
 
