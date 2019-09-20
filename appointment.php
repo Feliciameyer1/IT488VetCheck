@@ -15,7 +15,9 @@
                     Patient: {$row->patient}<br />
                     Pet: {$row->pet}<br />";
                     if($_SESSION['role'] == 'Veterinarian') {
-                        "<a href=\"./updateappointment.php?{$row->_id}\">Update Appointment</a><br /><br />";
+                        echo "<a href=\"./updateappointment.php?{$row->_id}\">Update Appointment</a><br /><br />";
+                    } else {
+                        echo "<br />";
                     }
                 }
             }
