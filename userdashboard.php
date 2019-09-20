@@ -57,7 +57,7 @@
             <?php else: ?>
                 <div class="col-3">
                     <h2 class="text-center">Vet Links</h2>
-                    <a href="#" class="btn btn-secondary mt-2">View Appointments</a>
+                    <a href="./appointments.php" class="btn btn-secondary mt-2">View Appointments</a>
                 </div>
                 <div class="col-9">
                     <h2 class="text-center"><?php echo "Hello, {$_SESSION['practicename']}"; ?></h2>
@@ -67,18 +67,6 @@
                         <p>City: <?php echo $_SESSION['city'] ?></p>
                         <p>State: <?php echo $_SESSION['state'] ?></p>
                         <p>Zip: <?php echo $_SESSION['zip'] ?></p>
-                        <p>Appointments: <br />
-                            <?php
-                                foreach($_SESSION['appointments'] as $appointment) {
-                                    $data = json_decode(json_encode($appointment), true);
-                                    echo "Patient: {$data['patient']['firstname']} {$data['patient']['lastname']}<br />
-                                    Contact: {$data['patient']['email']}<br />
-                                    Date: {$data['date']}<br />
-                                    Time: {$data['time']}<br />
-                                    Reason for Visit: {$data['reasonForVisit']}<br />";
-                                }
-                            ?>
-                        </p>
                         <p>Messages: <br />
                             <?php
                                 foreach($_SESSION['messages'] as $message) {
