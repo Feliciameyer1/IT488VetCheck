@@ -15,7 +15,7 @@
                     $rows = $mng->executeQuery('vetcheck.users', $query);
                     foreach($rows as $row) {
                         if($row->practicename) {
-                            echo "<option value=\"".$row->practicename."\">".$row->practicename."</option>";
+                            echo "<option value=\"".$row->_id."\">".$row->practicename."</option>";
                         }
                     }
                 ?>
@@ -45,7 +45,7 @@
                 <?php
                     foreach($_SESSION['pets'] as $pet) {
                         $data = json_decode(json_encode($pet), true);
-                        echo "<option value=\"".$data['name']."\">".$data['name']."</option>";
+                        echo "<option value=\"".$data['_id']['$oid']."\">".$data['name']."</option>";
                     }
                 ?>
             </select>
