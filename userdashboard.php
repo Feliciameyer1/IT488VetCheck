@@ -6,9 +6,8 @@
             <?php if($_SESSION['role'] == 'Patient'): ?>
                 <div class="col-3">
                     <h2 class="text-center">User Links</h2>
-                    <a href="./pets.php" class="btn btn-secondary mt-2">View Pets</a>
-                    <a href="./requestAppointment.php" class="btn btn-secondary mt-2">Request Appointment</a>
-                    <a href="./appointments.php" class="btn btn-secondary mt-2">View Appointments</a>
+                    <a href="./pets.php" class="btn btn-secondary mt-2">View/Add Pets</a>
+                    <a href="./appointments.php" class="btn btn-secondary mt-2">View/Request Appointments</a>
                     <a href="./contact.php" class="btn btn-secondary mt-2">Contact Vet Clinic</a>
                 </div>
                 <div class="col-9">

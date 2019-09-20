@@ -4,6 +4,11 @@
     <div class="container body">
         <h2 class="text-center">View Appointments</h2>
         <?php
+            if($_SESSION['role'] == 'Patient') {
+                echo '<a href="./requestAppointment.php" class="btn btn-secondary mb-2">Request Appointment</a>';
+            }
+        ?>
+        <?php
             foreach($_SESSION['appointments'] as $apt) {
                 $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
                 $query = new MongoDB\Driver\Query([]);
