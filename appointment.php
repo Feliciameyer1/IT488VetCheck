@@ -13,8 +13,10 @@
                     Time: {$row->time}<br />
                     Reason For Visit: {$row->reasonForVisit}<br />
                     Patient: {$row->patient}<br />
-                    Pet: {$row->pet}<br />
-                    <a href=\"./updateappointment.php?{$row->_id}\">Update Appointment</a><br /><br />";
+                    Pet: {$row->pet}<br />";
+                    if($_SESSION['role'] == 'Veterinarian') {
+                        "<a href=\"./updateappointment.php?{$row->_id}\">Update Appointment</a><br /><br />";
+                    }
                 }
             }
         ?>

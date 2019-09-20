@@ -9,6 +9,7 @@
                     <a href="./addpet.php" class="btn btn-secondary">Add Pet</a>
                     <a href="./pets.php" class="btn btn-secondary mt-2">View Pets</a>
                     <a href="./requestAppointment.php" class="btn btn-secondary mt-2">Request Appointment</a>
+                    <a href="./appointments.php" class="btn btn-secondary mt-2">View Appointments</a>
                     <a href="./contact.php" class="btn btn-secondary mt-2">Contact Vet Clinic</a>
                 </div>
                 <div class="col-9">
@@ -19,18 +20,6 @@
                         <p>City: <?php echo $_SESSION['city'] ?></p>
                         <p>State: <?php echo $_SESSION['state'] ?></p>
                         <p>Zip: <?php echo $_SESSION['zip'] ?></p>
-                        <p>Appointments: <br />
-                            <?php
-                                foreach($_SESSION['appointments'] as $appointment) {
-                                    $data = json_decode(json_encode($appointment), true);
-                                    echo "Vet: {$data['vet']['practicename']}<br />
-                                    Location: {$data['vet']['address']}, {$data['vet']['city']}, {$data['vet']['state']}, {$data['vet']['zip']}<br />
-                                    Date: {$data['date']}<br />
-                                    Time: {$data['time']}<br />
-                                    Reason for Visit: {$data['reasonForVisit']}<br />";
-                                }
-                            ?>
-                        </p>
                         <p>Messages: <br />
                             <?php
                                 foreach($_SESSION['messages'] as $message) {
