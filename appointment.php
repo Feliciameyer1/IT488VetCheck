@@ -9,13 +9,12 @@
             $rows = $mng->executeQuery('vetcheck.appointments', $query);
             foreach($rows as $row) {
                 if($row->_id == $_SERVER['QUERY_STRING']) {
-                    $data = json_decode(json_encode($row), true);
-                    echo "Patient: {$data['patient']['firstname']} {$data['patient']['lastname']}<br />
-                    Contact: {$data['patient']['email']}<br />
-                    Date: {$data['date']}<br />
-                    Time: {$data['time']}<br />
-                    Reason for Visit: {$data['reasonForVisit']}<br />
-                    <a href=\"./updateappointment.php?{$data['_id']['$oid']}\">Update Appointment</a><br /><br />";
+                    echo "Date: {$row->date}<br />
+                    Time: {$row->time}<br />
+                    Reason For Visit: {$row->reasonForVisit}<br />
+                    Patient: {$row->patient}<br />
+                    Pet: {$row->pet}<br />
+                    <a href=\"./updateappointment.php?{$row->_id}\">Update Appointment</a><br /><br />";
                 }
             }
         ?>
