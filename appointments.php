@@ -4,14 +4,20 @@
     <div class="container body">
         <h2 class="text-center">View Appointments</h2>
         <?php
-            foreach($_SESSION['appointments'] as $appointment) {
-                $data = json_decode(json_encode($appointment), true);
-                echo "Patient: {$data['patient']['firstname']} {$data['patient']['lastname']}<br />
-                Contact: {$data['patient']['email']}<br />
-                Date: {$data['date']}<br />
-                Time: {$data['time']}<br />
-                Reason for Visit: {$data['reasonForVisit']}<br />
-                <a href=\"./appointment.php?{$data['_id']['$oid']}\">View Appointment</a><br /><br />";
+            foreach($_SESSION['appointments'] as $apt) {
+                $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
+                $query = new MongoDB\Driver\Query([]);
+                $rows = $mng->executeQuery('vetcheck.appointments', $query);
+                foreach($rows as $row) {
+                    if($row->_id == $apt) {
+                        echo "Date: {$row->date}<br />
+                        Time: {$row->time}<br />
+                        Reason For Visit: {$row->reasonForVisit}<br />
+                        Patient: {$row->patient}<br />
+                        Pet: {$row->pet}<br />
+                        <a href=\"./appointment.php?{$row->_id}\">View Appointment</a><br /><br />";
+                    }
+                }
             }
         ?>
     </div>
