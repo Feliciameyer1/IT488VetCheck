@@ -39,7 +39,7 @@
         $bulk2->update(array("_id" => $ownerId), array('$push' => array("pets" => $petRef)));
         $res = $mng->executeBulkWrite('vetcheck.users', $bulk2);
 
-        array_push($_SESSION['pets'], $pet);
+        array_push($_SESSION['pets'], $pet['_id']);
         header("Location: ../userdashboard.php");
     } catch(MongoDB\Driver\Exception\Exception $e) {
         die('error'.$e);
