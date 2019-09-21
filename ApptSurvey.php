@@ -2,9 +2,9 @@
     include_once('header.php');
 ?>
     <div class="container body">
-        <h2 class="text-center">CLient Satisfaction Survey</h2>
+        <h2 class="text-center">Client Satisfaction Survey</h2>
         <p>Please take the time to tell us about your latest visit with:</p> 
-        <form  action="php/surveysubmit.php" method="POST">
+        <form  action="php/ApptSurveyLogic.php" method="POST">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="CustSat">How satisified where you with your visit with the vet?</label>
