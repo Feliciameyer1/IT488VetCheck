@@ -21,6 +21,8 @@
                         Patient: {$row->patient}<br />
                         Pet: {$row->pet}<br />
                         <a href=\"./appointment.php?{$row->_id}\">View Appointment</a><br /><br />";
+                        echo"Please take the time to fill out a survey about your visit.<br>";
+                        echo "<a href='./ApptSurvey.php'>Appointment Survey</a><br /><br />";
                     }
                 }
             }
