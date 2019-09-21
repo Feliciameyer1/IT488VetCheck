@@ -68,7 +68,7 @@
         $bulk4->update(array("_id" => $petInfo), array('$push' => array("appointments" => $aptRef)));
         $res = $mng->executeBulkWrite('vetcheck.pets', $bulk4);
 
-        array_push($_SESSION['appointments'], $appointment);
+        array_push($_SESSION['appointments'], $aptRef);
         header("Location: ../userdashboard.php");
     } catch(MongoDB\Driver\Exception\Exception $e) {
         die('error'.$e);
