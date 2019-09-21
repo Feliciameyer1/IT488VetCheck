@@ -16,8 +16,7 @@
         $rows = $mng->executeQuery('vetcheck.users', $query);
         foreach($rows as $row) {
             if($row->practicename == $vet) {
-                $vetInfo = $row;
-                $vetInfo->password = null;
+                $vetInfo = $row->_id;
             }
         }
 
@@ -25,8 +24,7 @@
         $rows = $mng->executeQuery('vetcheck.users', $query2);
         foreach($rows as $row) {
             if($row->_id == $patientId) {
-                $patientInfo = $row;
-                $patientInfo->password = null;
+                $patientInfo = $row->_id;
             }
         }
 
