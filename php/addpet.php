@@ -28,7 +28,9 @@
             'breed' => $breed,
             'gender' => $gender,
             'age' => $age,
-            'owner' => $ownerInfo
+            'owner' => $ownerInfo,
+            'shots' => [],
+            'appointments' => []
         ];
 
         $petRef = $pet['_id'];

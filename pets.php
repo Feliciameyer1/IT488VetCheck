@@ -16,10 +16,15 @@
                         Breed: {$row->breed}<br />
                         Gender: {$row->gender}<br />
                         Age: {$row->age}<br />
-                        Shots: ";
-                        foreach($row->shots as $shot) {
-                            echo $shot.", ";
+                        Shots: <br />";
+                        if(count($row->shots) > 0) {
+                            foreach($row->shots as $shot) {
+                                echo $shot."<br />";
+                            }
+                        } else {
+                            echo "No shot records found.<br />";
                         }
+                        echo "<br />";
                     }
                 }
             }
