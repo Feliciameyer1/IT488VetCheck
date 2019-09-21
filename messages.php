@@ -15,9 +15,12 @@
                 $rows = $mng->executeQuery('vetcheck.messages', $query);
                 foreach($rows as $row) {
                     if($row->_id == $msg) {
-                        echo "Vet: {$row->vet}<br />
-                        Message: {$row->message}<br />
-                        <a href=\"./appointment.php?{$row->_id}\">View Appointment</a><br /><br />";
+                        if($_SESSION['role'] == 'Patient') {
+                            echo "Vet: {$row->vet}<br />";
+                        } else {
+                            echo "Patient: {$row->patient}<br />";
+                        }
+                        echo "Message: {$row->message}<br /><br />";
                     }
                 }
             }
