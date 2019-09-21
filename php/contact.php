@@ -20,28 +20,22 @@
             }
         }
 
-        $query2 = new MongoDB\Driver\Query([]);
-        $rows = $mng->executeQuery('vetcheck.users', $query2);
-        foreach($rows as $row) {
-            if($row->_id == $patientId) {
-                $patientInfo = $row->_id;
-            }
-        }
-
         $message = [
             '_id' => new MongoDB\BSON\ObjectID,
             'vet' => $vetInfo,
-            'patient' => $patientInfo,
+            'patient' => $patientId,
             'message' => $msg
         ];
+
+        $msgRef = $message['_id'];
 
         $bulk->insert($message);
         $res = $mng->executeBulkWrite('vetcheck.messages', $bulk);
 
-        $bulk2->update(array("_id" => $patientId), array('$push' => array("messages" => $message)));
+        $bulk2->update(array("_id" => $patientId), array('$push' => array("messages" => $msgRef)));
         $res = $mng->executeBulkWrite('vetcheck.users', $bulk2);
 
-        $bulk3->update(array("_id" => $vetInfo->_id), array('$push' => array("messages" => $message)));
+        $bulk3->update(array("_id" => $vetInfo), array('$push' => array("messages" => $msgRef)));
         $res = $mng->executeBulkWrite('vetcheck.users', $bulk3);
 
         array_push($_SESSION['messages'], $message);
