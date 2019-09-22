@@ -1,10 +1,26 @@
 <?php
     include_once('header.php');
+
+    $duplicateFound = false;
+    if(!empty($_GET['duplicateFound'])) {
+        $duplicateFound = $_GET['duplicateFound'] == 'true';
+    }
 ?>
   
 <div class="container body">
     <h2 class="text-center">Request Appointment</h2>
     <form action="php/requestAppointment.php" method="POST">
+        <?php
+        if ($duplicateFound == true) {
+        ?>
+        <div class="form-group">
+        <label>Your chosen appointment date and time is already full.  Please choose a different date and time.</label>
+        </div>
+        <?php
+        }
+        ?>
+        <div class="form-group">
+
         <div class="form-group">
             <label for="vet">Veterinarian Clinic</label>
             <select id="vet" name="vet" class="form-control" required>

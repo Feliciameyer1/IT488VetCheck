@@ -30,7 +30,7 @@
         }
 
         if ($apptExists) {
-            header("Location: ../requestAppointment.php");
+            header("Location: ../requestAppointment.php?duplicateFound=true");
         }
         else {
             $rows = $mng->executeQuery('vetcheck.users', $query);
