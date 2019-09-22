@@ -6,9 +6,9 @@
     <h2 class="text-center">Request Appointment</h2>
     <form action="php/requestAppointment.php" method="POST">
         <div class="form-group">
-            <label for="vet">Veterinarian</label>
+            <label for="vet">Veterinarian Clinic</label>
             <select id="vet" name="vet" class="form-control">
-                <option value="-1">Select a vet</option>
+                <option value="-1">Select a clinic</option>
                 <?php
                     $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
                     $query = new MongoDB\Driver\Query([]);
