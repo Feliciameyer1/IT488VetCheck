@@ -7,8 +7,8 @@
     <form action="php/requestAppointment.php" method="POST">
         <div class="form-group">
             <label for="vet">Veterinarian Clinic</label>
-            <select id="vet" name="vet" class="form-control">
-                <option value="-1">Select a clinic</option>
+            <select id="vet" name="vet" class="form-control" required>
+                <option value="" disabled selected>Select a clinic</option>
                 <?php
                     $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
                     $query = new MongoDB\Driver\Query([]);
@@ -27,8 +27,8 @@
         </div>
         <div class="form-group">
             <label for="time">Time</label>
-            <select id="time" name="time" class="form-control">
-                <option value="-1">Select a time</option>
+            <select id="time" name="time" class="form-control"  required>
+                <option value="" disabled selected>Select a time</option>
                 <?php
                     for($x = 8; $x < 17; $x++) {
                         $date = '2000-01-01 '.$x.':00:00';
@@ -40,8 +40,8 @@
         </div>
         <div class="form-group">
             <label for="pet">Pet Visiting</label>
-            <select id="pet" name="pet" class="form-control">
-                <option value="-1">Select a pet</option>
+            <select id="pet" name="pet" class="form-control"  required>
+                <option value="" disabled selected>Select a pet</option>
                 <?php
                     foreach($_SESSION['pets'] as $pet) {
                         $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
@@ -58,7 +58,7 @@
         </div>
         <div class="form-group">
 			<label for="reasonforvisit">Reason for Visit</label>
-			<textarea class="form-control" id="reasonforvisit" name="reasonforvisit" rows="4"></textarea>
+			<textarea class="form-control" id="reasonforvisit" name="reasonforvisit" rows="4"  required></textarea>
 		</div>
         <div class="text-center">
             <button type="submit" value="submit" class="btn btn-primary">Submit Request</button>
