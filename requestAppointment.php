@@ -67,6 +67,7 @@
 </div>
 <script>
 $( "#datepicker" ).datepicker({
+    minDate: 0,
 	inline: true
 });
 
