@@ -13,63 +13,79 @@
     $petId = $_POST['pet'];
     $reasonforvisit = $_POST['reasonforvisit'];
 
+    $apptExists = false;
+
     try {
         // TODO: move connection string to the session; 2019-09-15 - Chris
         $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
 
         $query = new MongoDB\Driver\Query([]);
-        $rows = $mng->executeQuery('vetcheck.users', $query);
+
+        $rows = $mng->executeQuery('vetcheck.appointments', $query);
         foreach($rows as $row) {
-            if($row->_id == $vet) {
-                $vetInfo = $row->_id;
-                $vetInfo->password = null;
+            if(  $row->date == $date && $row->time == $time  ) {
+                $apptExists = true;
+                break;
             }
         }
 
-        $query2 = new MongoDB\Driver\Query([]);
-        $rows = $mng->executeQuery('vetcheck.users', $query2);
-        foreach($rows as $row) {
-            if($row->_id == $patientId) {
-                $patientInfo = $row->_id;
-                $patientInfo->password = null;
-            }
+        if ($apptExists) {
+            header("Location: ../requestAppointment.php");
         }
-
-        $query3 = new MongoDB\Driver\Query([]);
-        $rows = $mng->executeQuery('vetcheck.pets', $query3);
-        foreach($rows as $row) {
-            if($row->_id == $petId) {
-                $petInfo = $row->_id;
+        else {
+            $rows = $mng->executeQuery('vetcheck.users', $query);
+            foreach($rows as $row) {
+                if($row->_id == $vet) {
+                    $vetInfo = $row->_id;
+                    $vetInfo->password = null;
+                }
             }
+
+            $query2 = new MongoDB\Driver\Query([]);
+            $rows = $mng->executeQuery('vetcheck.users', $query2);
+            foreach($rows as $row) {
+                if($row->_id == $patientId) {
+                    $patientInfo = $row->_id;
+                    $patientInfo->password = null;
+                }
+            }
+
+            $query3 = new MongoDB\Driver\Query([]);
+            $rows = $mng->executeQuery('vetcheck.pets', $query3);
+            foreach($rows as $row) {
+                if($row->_id == $petId) {
+                    $petInfo = $row->_id;
+                }
+            }
+
+            $appointment = [
+                '_id' => new MongoDB\BSON\ObjectID,
+                'vet' => $vetInfo,
+                'patient' => $patientInfo,
+                'date' => $date,
+                'time' => $time,
+                'pet' => $petInfo,
+                'reasonForVisit' => $reasonforvisit,
+                'notes' => []
+            ];
+
+            $aptRef = $appointment['_id'];
+
+            $bulk->insert($appointment);
+            $res = $mng->executeBulkWrite('vetcheck.appointments', $bulk);
+
+            $bulk2->update(array("_id" => $patientId), array('$push' => array("appointments" => $aptRef)));
+            $res = $mng->executeBulkWrite('vetcheck.users', $bulk2);
+
+            $bulk3->update(array("_id" => $vetInfo), array('$push' => array("appointments" => $aptRef)));
+            $res = $mng->executeBulkWrite('vetcheck.users', $bulk3);
+
+            $bulk4->update(array("_id" => $petInfo), array('$push' => array("appointments" => $aptRef)));
+            $res = $mng->executeBulkWrite('vetcheck.pets', $bulk4);
+
+            array_push($_SESSION['appointments'], $aptRef);
+            header("Location: ../appointments.php");
         }
-
-        $appointment = [
-            '_id' => new MongoDB\BSON\ObjectID,
-            'vet' => $vetInfo,
-            'patient' => $patientInfo,
-            'date' => $date,
-            'time' => $time,
-            'pet' => $petInfo,
-            'reasonForVisit' => $reasonforvisit,
-            'notes' => []
-        ];
-
-        $aptRef = $appointment['_id'];
-
-        $bulk->insert($appointment);
-        $res = $mng->executeBulkWrite('vetcheck.appointments', $bulk);
-
-        $bulk2->update(array("_id" => $patientId), array('$push' => array("appointments" => $aptRef)));
-        $res = $mng->executeBulkWrite('vetcheck.users', $bulk2);
-
-        $bulk3->update(array("_id" => $vetInfo), array('$push' => array("appointments" => $aptRef)));
-        $res = $mng->executeBulkWrite('vetcheck.users', $bulk3);
-
-        $bulk4->update(array("_id" => $petInfo), array('$push' => array("appointments" => $aptRef)));
-        $res = $mng->executeBulkWrite('vetcheck.pets', $bulk4);
-
-        array_push($_SESSION['appointments'], $aptRef);
-        header("Location: ../userdashboard.php");
     } catch(MongoDB\Driver\Exception\Exception $e) {
         die('error'.$e);
     }

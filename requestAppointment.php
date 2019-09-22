@@ -23,11 +23,11 @@
         </div>
         <div class="form-group">
             <label for="datepicker">Date</label>
-            <input type="text" class="form-control" id="datepicker" name="datepicker" required>
+            <input type="text" class="form-control" id="datepicker" name="datepicker" autocomplete="off" required>
         </div>
         <div class="form-group">
             <label for="time">Time</label>
-            <select id="time" name="time" class="form-control"  required>
+            <select id="time" name="time" class="form-control" required>
                 <option value="" disabled selected>Select a time</option>
                 <?php
                     for($x = 8; $x < 17; $x++) {
@@ -41,7 +41,7 @@
         <div class="form-group">
             <label for="pet">Pet Visiting</label>
             <select id="pet" name="pet" class="form-control"  required>
-                <option value="" disabled selected>Select a pet</option>
+                <option value="" disabled  selected>Select a pet</option>
                 <?php
                     foreach($_SESSION['pets'] as $pet) {
                         $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
