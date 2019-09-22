@@ -23,7 +23,7 @@
 
         $rows = $mng->executeQuery('vetcheck.appointments', $query);
         foreach($rows as $row) {
-            if(  $row->date == $date && $row->time == $time  ) {
+            if(  $row->date == $date && $row->time == $time && $row->vet == $vet ) {
                 $apptExists = true;
                 break;
             }
