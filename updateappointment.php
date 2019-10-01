@@ -18,6 +18,8 @@
                 <option value='Canine Influenza Virus'>Canine Influenza Virus</option>
                 <option value='Leptospirosis'>Leptospirosis</option>
                 <option value='Lyme'>Lyme</option>
+                <option value='FVRCP'> FVRCP</option>
+                <option value='Feline Distemper'>Feline Distemper</option>
             </select>
         </div>
         <div class="form-group">
