@@ -9,12 +9,12 @@
       google.charts.load('current', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
+      google.charts.setOnLoadCallback(drawNewClientChart);
+      google.charts.setOnLoadCallback(drawCustSatChart);
       // Callback that creates and populates a data table,
       // instantiates the bar chart, passes in the data and
       // draws it.
-      function drawChart() {
+      function drawNewClientChart() {
 
         // Create the data table.
         var data = new google.visualization.DataTable();
@@ -34,9 +34,25 @@
                        'height':300};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.BarChart(document.getElementById('NewClientchart_div'));
         chart.draw(data, options);
       }
+      function drawCustSatChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Customer Survey Results', 'Rating'],
+            ['Satisfied Customers',     95],
+            ['Unsatisfied Customers',     5]
+          
+      ]);
+
+          var options = {
+            title: 'Customer Survey Results',
+            is3D: true,
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('CustSatChart'));
+          chart.draw(data, options);
+        }
     </script>
     <div class="container body">
         <div class="row">
@@ -73,7 +89,9 @@
                         <p>Zip: <?php echo $_SESSION['zip'] ?></p>
                     </div>
                      <!--Div that will hold the bar chart-->
-   					 <div id="chart_div"></div>
+   					 <div id="NewClientchart_div"></div>
+   					 <!--Div that will hold the CustSat chart-->
+   					 <div id="CustSatChart"></div>
                 </div>
             <?php endif; ?>
         </div>
