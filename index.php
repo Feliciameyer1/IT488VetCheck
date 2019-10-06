@@ -29,7 +29,9 @@
             </div>
             <div class="card-body">
                 <h4 class="card-title">What Is VetCheck?</h4>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text">VetCheck is an application that allows your clients to check their pet's health status online. They can also request an appointment, and contact you. 
+                Vet check also provides you tools to track the performance of your hospital. You will be able to track how many new clients you obtain, see your client satisfaction score, check your finances, and even see how your competitors rate against you.
+                </p>
             </div>
         </div>
         <div class="card">
@@ -37,8 +39,8 @@
                 <h2>Why Should I Use VetCheck?</h2>
             </div>
             <div class="card-body text-right">
-                <h4 class="card-title">Special title treatment</h4>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <h4 class="card-title">Saves time </h4>
+                <p class="card-text">Your clients will be able to quickly obtain appointments with you at any time. This will save them the aggrevation of having to call and wait for your receptionist to call back to schedule an appointment.</p>
             </div>
             <div class="card-header text-center">
                 <h2>Sign Up Now!</h2>
