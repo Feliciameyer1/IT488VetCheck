@@ -9,9 +9,15 @@
             }
         ?>
         <?php
-            $filter = [
-                'patient' => $_SESSION['_id']
-            ];
+            if($_SESSION['role'] == 'Patient') {
+                $filter = [
+                    'patient' => $_SESSION['_id']
+                ];
+            } else {
+                $filter = [
+                    'vet' => $_SESSION['_id']
+                ];
+            }
             $options = [
                 'sort' => ['date' => 1, 'time' => 1],
             ];
@@ -42,6 +48,26 @@
                     $userName = '';
                 }
 
+                /* Try to get the vet's name */
+                try {
+                    $vetFilter = [
+                        '_id' => $row->vet
+                    ];
+                
+                    $vetQuery = new MongoDB\Driver\Query($vetFilter);
+                    $vetRes = $mng->executeQuery('vetcheck.users', $vetQuery);
+            
+                    $vetRow = $vetRes->toArray();
+                    if ($vetRow) {
+                        $vetName =  $vetRow[0]->practicename;
+                    }
+                }
+                catch (MongoDB\Driver\Exception\Exception $e) {
+                    /* if an exception occurs, show a blank user name */
+                    $vetName = '';
+                }
+
+
                 /* Try to get the pet's name */
                 try {
                     $petFilter = [
@@ -62,13 +88,21 @@
                 }
 
                 echo "Date: {$row->date}<br />
+                Practice: {$vetName}<br />
                 Time: {$row->time}<br />
                 Reason For Visit: {$row->reasonForVisit}<br />
                 Patient: {$userName}<br />
-                Pet: {$petName}<br />
-                <a href=\"./appointment.php?{$row->_id}\">View Appointment</a><br /><br />";
-                echo"Please take the time to fill out a survey about your visit.<br>";
-                echo "<a href='./ApptSurvey.php'>Appointment Survey</a><br /><br />";
+                Pet: {$petName}<br />";
+
+                if($_SESSION['role'] == 'Patient') {
+                    echo"<a href=\"./appointment.php?{$row->_id}\">View Appointment</a><br /><br />";
+                    echo"Please take the time to fill out a survey about your visit.<br>";
+                    echo "<a href='./ApptSurvey.php'>Appointment Survey</a><br /><br />";
+                } else {
+                    echo"<a href=\"./updateappointment.php?{$row->_id}\">Update Appointment</a><br />";
+                    echo"<a href=\"./AppointmentOutcome.php?{$row->_id}\">Appointment Outcome</a><br /><br />";
+                }
+
             }
         ?>
     </div>
