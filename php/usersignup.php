@@ -9,6 +9,7 @@
     $state = $_POST['state'];
     $zip = $_POST['zip'];
     $password = $_POST['password'];
+    $signupdate = date("m/d/Y");
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
     $user = [
@@ -20,6 +21,7 @@
         'city' => $city,
         'state' => $state,
         'zip' => $zip,
+        'signup date'=>$signupdate,
         'password' => $hashed_password,
         'pets' => [],
         'role' => 'Patient',
