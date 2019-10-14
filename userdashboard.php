@@ -13,6 +13,8 @@
       // Set a callback to run when the Google Visualization API is loaded.
       google.charts.setOnLoadCallback(drawNewClientChart);
       google.charts.setOnLoadCallback(drawCustSatChart);
+      google.charts.setOnLoadCallback(drawFinanceChart);
+
       // Callback that creates and populates a data table,
       // instantiates the bar chart, passes in the data and
       // draws it.
@@ -37,6 +39,26 @@
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.BarChart(document.getElementById('NewClientchart_div'));
+        chart.draw(data, options);
+      }
+      function drawFinanceChart() {
+                      
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Finance');
+        data.addColumn('number', 'Cost & Profit');
+        data.addRows([
+          ['Supplies', 3],
+          ['Sales', 15]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Finance Tracker',
+                       'width':700,
+                       'height':300};
+
+ // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('FinanceChart_div'));
         chart.draw(data, options);
       }
       function drawCustSatChart() {
