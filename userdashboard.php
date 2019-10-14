@@ -49,12 +49,13 @@
         data.addColumn('number', 'Cost & Profit');
         data.addRows([
           ['Supplies', 3],
-          ['Sales', 15]
+          ['Sales', 15],
+          ['Labor', 5]
         ]);
 
         // Set chart options
         var options = {'title':'Finance Tracker',
-                       'width':700,
+                       'width':600,
                        'height':300};
 
  // Instantiate and draw our chart, passing in some options.

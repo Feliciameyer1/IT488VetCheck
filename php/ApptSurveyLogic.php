@@ -6,18 +6,23 @@
     
     $CustSat=$_POST['CustSat'];
     $comments=$_POST['Comments'];
+    $patientId = $_SESSION['_id'];
 
     try {
         
         $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
 
+        $query2 = new MongoDB\Driver\Query([]);
+            $rows = $mng->executeQuery('vetcheck.users', $query2);
+            foreach($rows as $row) {
+                if($row->_id == $patientId) {
+                    $patientInfo = $row->_id;
+                    $patientInfo->password = null;
+                }
+            }
+
         $feedback = [
             '_id' => new MongoDB\BSON\ObjectID,
-            
-            'OverallSat' => $CustSat,
-            'Comments' => $comments,
-            
-        ];
 
         $bulk->insert($feedback);
         $res = $mng->executeBulkWrite('vetcheck.ratings', $bulk);
