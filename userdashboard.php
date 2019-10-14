@@ -2,10 +2,14 @@
     include_once('header.php');
     $numSatisfied = 0;
     $numUnsatisfied = 0;
-    
+   
     try{
+        
         $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
-        $query = new MongoDB\Driver\Query([]);
+        $filter = [
+            'vet' => $_SESSION['_id']
+        ];
+        $query = new MongoDB\Driver\Query([$filter]);
         $rows = $mng->executeQuery('vetcheck.ratings', $query);
         foreach($rows as $row) {
             if($row-> satisfaction >= 3){
