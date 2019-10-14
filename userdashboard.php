@@ -1,5 +1,7 @@
 <?php
     include_once('header.php');
+    $numSatisfied = 95;
+    $numUnsatisfied = 52;
 ?>
   <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -38,12 +40,14 @@
         chart.draw(data, options);
       }
       function drawCustSatChart() {
-          var data = google.visualization.arrayToDataTable([
-            ['Customer Survey Results', 'Rating'],
-            ['Satisfied Customers',     95],
-            ['Unsatisfied Customers',     5]
-          
-      ]);
+            var numSatisfied = eval('<?php echo $numSatisfied; ?>');
+            var numUnsatisfied = eval('<?php echo $numUnsatisfied; ?>');
+
+            var data = google.visualization.arrayToDataTable([
+                ['Customer Survey Results', 'Rating'],
+                ['Satisfied Customers', numSatisfied],
+                ['Unsatisfied Customers', numUnsatisfied]
+            ]);
 
           var options = {
             title: 'Customer Survey Results',
