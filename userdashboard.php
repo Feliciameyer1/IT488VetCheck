@@ -8,7 +8,7 @@
         $query = new MongoDB\Driver\Query([]);
         $rows = $mng->executeQuery('vetcheck.ratings', $query);
         foreach($rows as $row) {
-            if($row-> satisfaction >= 4){
+            if($row-> satisfaction >= 3){
                 $numSatisfied= $numSatisfied+1;
         } else{
             $numUnsatisfied=$numUnsatisfied+1;
