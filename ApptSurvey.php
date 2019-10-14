@@ -12,23 +12,7 @@
     <div class="container body">
     
         <h2 class="text-center">Client Satisfaction Survey</h2>
-        <p>Please take the time to tell us about your latest visit with your vet:</p> 
-         <div class="form-group">
-            <label for="vet">Veterinarian Clinic</label>
-            <select id="vet" name="vet" class="form-control" required>
-                <option value="" disabled selected>Select a clinic</option>
-                <?php
-                    $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
-                    $query = new MongoDB\Driver\Query([]);
-                    $rows = $mng->executeQuery('vetcheck.users', $query);
-                    foreach($rows as $row) {
-                        if($row->practicename) {
-                            echo "<option value=\"".$row->_id."\">".$row->practicename."</option>";
-                        }
-                    }
-                ?>
-            </select>
-        </div>
+        <p>Please take the time to tell us about your latest visit with your vet:</p>
         <form  action="php/ApptSurveyLogic.php" method="POST">
             <div class="form-row">
                 <label for="CustSat">How satisified where you with your visit with the vet?</label> 
