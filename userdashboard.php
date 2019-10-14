@@ -1,7 +1,24 @@
 <?php
     include_once('header.php');
-    $numSatisfied = 95;
-    $numUnsatisfied = 52;
+    $numSatisfied = 0;
+    $numUnsatisfied = 0;
+    
+    try{
+        $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
+        $query = new MongoDB\Driver\Query([]);
+        $rows = $mng->executeQuery('vetcheck.ratings', $query);
+        foreach($rows as $row) {
+            if($row-> satisfaction >= 4){
+                $numSatisfied= $numSatisfied+1;
+        } else{
+            $numUnsatisfied+1;
+        }
+    }
+    }
+    catch(MongoDB\Driver\Exception\Exception $e){
+        die('error'.$e);
+    }
+    
 ?>
   <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
