@@ -96,8 +96,6 @@
 
                 if($_SESSION['role'] == 'Patient') {
                     echo"<a href=\"./appointment.php?{$row->_id}\">View Appointment</a><br /><br />";
-                    echo"Please take the time to fill out a survey about your visit.<br>";
-                    echo "<a href='./ApptSurvey.php'>Appointment Survey</a><br /><br />";
                 } else {
                     echo"<a href=\"./updateappointment.php?{$row->_id}\">Update Appointment</a><br />";
                     echo"<a href=\"./AppointmentOutcome.php?{$row->_id}\">Appointment Outcome</a><br /><br />";

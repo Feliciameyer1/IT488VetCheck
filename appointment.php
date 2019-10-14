@@ -60,7 +60,8 @@
                     if($_SESSION['role'] == 'Veterinarian') {
                         echo "<a href=\"./updateappointment.php?{$row->_id}\">Update Appointment</a><br /><br />";
                     } else {
-                        echo "<br />";
+                        echo"<br />Please take the time to fill out a survey about your visit.<br>";
+                        echo "<a href=\"./ApptSurvey.php?{$row->_id}\">Appointment Survey</a><br /><br />";
                     }
                 }
             }
