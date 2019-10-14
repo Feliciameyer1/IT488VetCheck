@@ -3,7 +3,7 @@
 
     $bulk = new MongoDB\Driver\BulkWrite;
    
-
+    $vetID =$_POST['vet'];
     $CustSat=$_POST['CustSat'];
     $comments=$_POST['Comments'];
 
@@ -13,6 +13,7 @@
 
         $feedback = [
             '_id' => new MongoDB\BSON\ObjectID,
+            'vetid'=>$vetID,
             'OverallSat' => $CustSat,
             'Comments' => $comments,
             
