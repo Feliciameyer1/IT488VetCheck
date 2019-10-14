@@ -11,7 +11,7 @@
             if($row-> satisfaction >= 4){
                 $numSatisfied= $numSatisfied+1;
         } else{
-            $numUnsatisfied+1;
+            $numUnsatisfied=$numUnsatisfied+1;
         }
     }
     }
