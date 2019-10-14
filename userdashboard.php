@@ -54,7 +54,7 @@
 
         // Set chart options
         var options = {'title':'Finance Tracker',
-                       'width':700,
+                       'width':600,
                        'height':300};
 
  // Instantiate and draw our chart, passing in some options.
