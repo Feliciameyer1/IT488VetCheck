@@ -159,6 +159,8 @@
    					 <div id="NewClientchart_div"></div>
    					 <!--Div that will hold the CustSat chart-->
    					 <div id="CustSatChart"></div>
+   					 <!--Div that will hold the finance chart-->
+   					 <div id="FinanceChart_div"></div>
    					 <!--Div that will hold the CompRat chart-->
    					 <div id="CompetitorRatingChart"></div>
                     </div>
