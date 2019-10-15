@@ -2,6 +2,50 @@
     include_once('header.php');
     $numSatisfied = 0;
     $numUnsatisfied = 0;
+    $six=0;
+    $five=0;
+    $four=0;
+    $three=0;
+    $two=0;
+    $one=0;
+    try{
+        $sixMonthsAgo=strtotime("six months ago");
+        $fiveMonthsAgo=strtotime("five months ago");
+        $fourMonthsAgo=strtotime("four months ago");
+        $threeMonthsAgo=strtotime("three months ago");
+        $twoMonthsAgo=strtotime("two months ago");
+        $oneMonthAgo=strtotime("one month ago");
+        
+        $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
+        $filter2=[
+            'signup date'=> $sixMonthsAgo,
+        ];
+        $options=[
+            'sort'=> 1,
+        ];
+        $query2 =new MongoDB\Driver\Query($filter2,$options);
+        $rows2= $mng->executeQuery('vetcheck.ratings', $query2);
+        foreach($rows2 as $row2) {
+            if($row2 -> signupdate ==$sixMonthsAgo){
+                $six= $six+1;
+            } elseif ($row2->signupdate == $fiveMonthsAgo){
+                $five=$five + 1;
+            }elseif ($row2->signupdate == $fourMonthsAgo){
+                $four=$four + 1;
+            }elseif ($row2->signupdate == $threeMonthsAgo){
+                $three=$three + 1;
+            }elseif ($row2->signupdate == $twoMonthsAgo){
+                $two=$two + 1;
+            }elseif ($row2->signupdate == $oneMonthAgo){
+                $one=$one +1;
+            }
+            
+        }
+    }
+    catch(MongoDB\Driver\Exception\Exception $e){
+        die('error'.$e);
+    }
+    
    
     try{
         
@@ -42,17 +86,24 @@
       // draws it.
       function drawNewClientChart() {
 
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Month');
-        data.addColumn('number', 'Number of new Clients');
-        data.addRows([
-          ['January', 4],
-          ['February', 3],
-          ['March',4],
-          ['April', 3],
-          ['May', 2]
-        ]);
+    	  // Create the data table.
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Month');
+          data.addColumn('number', 'Number of new Clients');
+          var sixmonths=eval('<?php echo $six;?>');
+          var fivemonths=eval('<?php echo $five;?>');
+          var fourmonths=eval('<?php echo $four;?>');
+          var threemonths=eval('<?php echo $three;?>');
+          var twomonths=eval('<?php echo $two;?>');
+          var onemonth=eval('<?php echo $one;?>');
+          data.addRows([
+            ['Six Months', sixmonths],
+            ['Five Months', fivemonths],
+            ['Four Months',fourmonths],
+            ['Three Months', threemonths],
+            ['Two Months', twomonths],
+            ['One Month', onemonth]
+          ]);
 
         // Set chart options
         var options = {'title':'New Client Tracker',
