@@ -103,26 +103,17 @@
                             echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$diagnosis}<br />";
                         }
                     }
-                    else{
-                        echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None<br />";
-                    }
                     echo "Medications:<br />";
                     if (property_exists($row, 'medications')) {
                         foreach($row->medications as $medication) {
                             echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$medication}<br />";
                         }
                     }
-                    else{
-                        echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None<br />";
-                    }
                     echo "Notes:<br />";
                     if (property_exists($row, 'notes')) {
                         foreach($row->notes as $note) {
                             echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$note}<br />";
                         }
-                    }
-                    else{
-                        echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None<br />";
                     }
                     echo"<a href=\"./updateappointment.php?{$row->_id}\">Appointment Outcome</a><br /><br />";
                 }
