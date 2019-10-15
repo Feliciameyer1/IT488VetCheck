@@ -21,7 +21,7 @@
         'city' => $city,
         'state' => $state,
         'zip' => $zip,
-        'signup date'=>$signupdate,
+        'signupdate'=>$signupdate,
         'password' => $hashed_password,
         'pets' => [],
         'role' => 'Patient',
