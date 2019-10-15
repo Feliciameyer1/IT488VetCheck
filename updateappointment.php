@@ -2,12 +2,16 @@
     include_once('header.php');
 ?>
 <div class="container body">
-    <h2 class="text-center">Update Appointment</h2>
+    <h2 class="text-center">Appointment Outcome</h2>
     <form action="php/updateappointment.php" method="POST">
         <div class="form-group d-none">
             <label for="appointment">Appointment</label>
             <input type="text" class="form-control" id="appointment" name="appointment" value="<?php echo $_SERVER['QUERY_STRING'] ?>" required>
         </div>
+        <div class="form-group">
+			<label for="notes">Diagnosis</label>
+			<textarea class="form-control" id="diagnosis" name="diagnosis" rows="4"></textarea>
+		</div>
         <div class="form-group">
             <label for="shots">Shots</label>
             <select id="shots" name="shots" class="form-control">
@@ -22,6 +26,10 @@
                 <option value='Feline Distemper'>Feline Distemper</option>
             </select>
         </div>
+        <div class="form-group">
+			<label for="notes">Prescribed Medications</label>
+			<textarea class="form-control" id="medications" name="medications" rows="4"></textarea>
+		</div>
         <div class="form-group">
 			<label for="notes">Additional Notes</label>
 			<textarea class="form-control" id="notes" name="notes" rows="4"></textarea>

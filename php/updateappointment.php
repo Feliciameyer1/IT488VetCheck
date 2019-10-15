@@ -5,7 +5,8 @@
     $bulk2 = new MongoDB\Driver\BulkWrite;
 
     $appointmentId = $_POST['appointment'];
-    $shots = $_POST['shots'];
+    $diagnosis = $_POST['diagnosis'];
+    $medications = $_POST['medications'];
     $notes = $_POST['notes'];
 
     try {
@@ -23,9 +24,9 @@
         $bulk->update(array("_id" => $aptPet), array('$push' => array("shots" => $shots)));
         $res = $mng->executeBulkWrite('vetcheck.pets', $bulk);
         
-        $bulk2->update(array("_id" => $appointmentId), array('$push' => array("notes" => $notes)));
+        $bulk2->update(array("_id" => $appointmentId), array('$push' => array("notes" => $notes, "medications" => $medications, "diagnosis" => $diagnosis)));
         $res = $mng->executeBulkWrite('vetcheck.appointments', $bulk2);
-        
+
         header("Location: ../userdashboard.php");
     } catch(MongoDB\Driver\Exception\Exception $e) {
         die('error'.$e);

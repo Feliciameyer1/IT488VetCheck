@@ -68,7 +68,7 @@
                 }
 
 
-                /* Try to get the pet's name */
+                /* Try to get the pet's name and shots */
                 try {
                     $petFilter = [
                         '_id' => $row->pet
@@ -97,8 +97,34 @@
                 if($_SESSION['role'] == 'Patient') {
                     echo"<a href=\"./appointment.php?{$row->_id}\">View Appointment</a><br /><br />";
                 } else {
-                    echo"<a href=\"./updateappointment.php?{$row->_id}\">Update Appointment</a><br />";
-                    echo"<a href=\"./AppointmentOutcome.php?{$row->_id}\">Appointment Outcome</a><br /><br />";
+                    echo "Diagnosis: <br />";
+                    if (property_exists($row, 'diagnosis')) {
+                        foreach($row->diagnosis as $diagnosis) {
+                            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$diagnosis}<br />";
+                        }
+                    }
+                    else{
+                        echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None<br />";
+                    }
+                    echo "Medications:<br />";
+                    if (property_exists($row, 'medications')) {
+                        foreach($row->medications as $medication) {
+                            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$medication}<br />";
+                        }
+                    }
+                    else{
+                        echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None<br />";
+                    }
+                    echo "Notes:<br />";
+                    if (property_exists($row, 'notes')) {
+                        foreach($row->notes as $note) {
+                            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$note}<br />";
+                        }
+                    }
+                    else{
+                        echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None<br />";
+                    }
+                    echo"<a href=\"./updateappointment.php?{$row->_id}\">Appointment Outcome</a><br /><br />";
                 }
 
             }
