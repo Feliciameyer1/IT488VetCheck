@@ -100,6 +100,24 @@
 
           var chart = new google.visualization.PieChart(document.getElementById('CustSatChart'));
           chart.draw(data, options);
+             }
+      function drawCompRatChart() {
+            var numSatisfied = eval('<?php echo $numSatisfied; ?>');
+            var numUnsatisfied = eval('<?php echo $numUnsatisfied; ?>');
+
+            var data = google.visualization.arrayToDataTable([
+                ['Customer Survey Results', 'Rating'],
+                ['Satisfied Customers', numSatisfied],
+                ['Unsatisfied Customers', numUnsatisfied]
+            ]);
+
+          var options = {
+            title: 'Customer Survey Results',
+            is3D: true,
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('CustSatChart'));
+          chart.draw(data, options);
         }
     </script>
     <div class="container body">
@@ -140,6 +158,12 @@
    					 <div id="NewClientchart_div"></div>
    					 <!--Div that will hold the CustSat chart-->
    					 <div id="CustSatChart"></div>
+                    </div>
+                     <!--Div that will hold the bar chart-->
+   					 <div id="CompetitorRatingchart_div"></div>
+   					 <!--Div that will hold the CompRat chart-->
+   					 <div id="CustSatChart"></div>
+ </div>
                 </div>
             <?php endif; ?>
         </div>
