@@ -35,6 +35,7 @@
       google.charts.setOnLoadCallback(drawNewClientChart);
       google.charts.setOnLoadCallback(drawCustSatChart);
       google.charts.setOnLoadCallback(drawFinanceChart);
+      google.charts.setOnLoadCallback(drawCompRatChart);
 
       // Callback that creates and populates a data table,
       // instantiates the bar chart, passes in the data and
@@ -116,7 +117,7 @@
             is3D: true,
           };
 
-          var chart = new google.visualization.PieChart(document.getElementById('CustSatChart'));
+          var chart = new google.visualization.PieChart(document.getElementById('CompetitorRatingChart'));
           chart.draw(data, options);
         }
     </script>
@@ -158,12 +159,12 @@
    					 <div id="NewClientchart_div"></div>
    					 <!--Div that will hold the CustSat chart-->
    					 <div id="CustSatChart"></div>
-                    </div>
-                     <!--Div that will hold the bar chart-->
-   					 <div id="CompetitorRatingchart_div"></div>
    					 <!--Div that will hold the CompRat chart-->
-   					 <div id="CustSatChart"></div>
- </div>
+   					 <div id="CompetitorRatingChart"></div>
+                    </div>
+                     
+   					 
+ 
                 </div>
             <?php endif; ?>
         </div>
