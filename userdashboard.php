@@ -1,5 +1,5 @@
 <?php
-    include_once('header.php');
+include_once('header.php');Echo "test";
     $numSatisfied = 0;
     $numUnsatisfied = 0;
     $six=0;
@@ -8,6 +8,7 @@
     $three=0;
     $two=0;
     $one=0;
+   echo "test before try";
     try{
         $sixMonthsAgo=strtotime("six months ago");
         $fiveMonthsAgo=strtotime("five months ago");
@@ -18,15 +19,14 @@
         
         $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
         $filter2=[
-            'signup date'=> $sixMonthsAgo,
+            'role'=> "Patient",
         ];
-        $options=[
-            'sort'=> 1,
-        ];
-        $query2 =new MongoDB\Driver\Query($filter2,$options);
-        $rows2= $mng->executeQuery('vetcheck.ratings', $query2);
-        foreach($rows2 as $row2) {
-            if($row2 -> signupdate ==$sixMonthsAgo){
+       
+        $query2 =new MongoDB\Driver\Query($filter2);
+        $rows2= $mng->executeQuery('vetcheck.users', $query2);
+         foreach($rows2 as $row2) {
+          
+           if($row2 -> signupdate ==$sixMonthsAgo){
                 $six= $six+1;
             } elseif ($row2->signupdate == $fiveMonthsAgo){
                 $five=$five + 1;
@@ -39,8 +39,8 @@
             }elseif ($row2->signupdate == $oneMonthAgo){
                 $one=$one +1;
             }
-            
-        }
+           
+        } 
     }
     catch(MongoDB\Driver\Exception\Exception $e){
         die('error'.$e);
