@@ -26,17 +26,17 @@ include_once('header.php');Echo "test";
         $rows2= $mng->executeQuery('vetcheck.users', $query2);
          foreach($rows2 as $row2) {
           
-           if($row2 -> signupdate ==$sixMonthsAgo){
+           if($row2 -> signupdate > $sixMonthsAgo || $row2-> signupdate < $fiveMonthsAgo){
                 $six= $six+1;
-            } elseif ($row2->signupdate == $fiveMonthsAgo){
+           } elseif ($row2 -> signupdate > $fiveMonthsAgo || $row2-> signupdate < $fourMonthsAgo){
                 $five=$five + 1;
-            }elseif ($row2->signupdate == $fourMonthsAgo){
+           }elseif ($row2 -> signupdate > $fourMonthsAgo || $row2-> signupdate < $threeMonthsAgo){
                 $four=$four + 1;
-            }elseif ($row2->signupdate == $threeMonthsAgo){
+           }elseif ($row2 -> signupdate > $threeMonthsAgo || $row2-> signupdate < $twoMonthsAgo){
                 $three=$three + 1;
-            }elseif ($row2->signupdate == $twoMonthsAgo){
+           }elseif ($row2 -> signupdate > $twoMonthsAgo || $row2-> signupdate < $oneMonthAgo){
                 $two=$two + 1;
-            }elseif ($row2->signupdate == $oneMonthAgo){
+            }elseif ($row2->signupdate > $oneMonthAgo){
                 $one=$one +1;
             }
            
