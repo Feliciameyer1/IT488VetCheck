@@ -1,5 +1,5 @@
 <?php
-include_once('header.php');Echo "test";
+include_once('header.php');
     $numSatisfied = 0;
     $numUnsatisfied = 0;
     $six=0;
@@ -8,14 +8,14 @@ include_once('header.php');Echo "test";
     $three=0;
     $two=0;
     $one=0;
-   echo "test before try";
+  
     try{
-        $sixMonthsAgo=strtotime("six months ago");
-        $fiveMonthsAgo=strtotime("five months ago");
-        $fourMonthsAgo=strtotime("four months ago");
-        $threeMonthsAgo=strtotime("three months ago");
-        $twoMonthsAgo=strtotime("two months ago");
-        $oneMonthAgo=strtotime("one month ago");
+        $sixMonthsAgo=strtotime("6 months ago");
+        $fiveMonthsAgo=strtotime("5 months ago");
+        $fourMonthsAgo=strtotime("4 months ago");
+        $threeMonthsAgo=strtotime("3 months ago");
+        $twoMonthsAgo=strtotime("2 months ago");
+        $oneMonthAgo=strtotime("1 month ago");
         
         $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
         $filter2=[
@@ -25,18 +25,18 @@ include_once('header.php');Echo "test";
         $query2 =new MongoDB\Driver\Query($filter2);
         $rows2= $mng->executeQuery('vetcheck.users', $query2);
          foreach($rows2 as $row2) {
-          
-           if($row2 -> signupdate > $sixMonthsAgo || $row2-> signupdate < $fiveMonthsAgo){
+         
+           if($row2 -> signupdate < $sixMonthsAgo || $row2-> signupdate > $fiveMonthsAgo){
                 $six= $six+1;
-           } elseif ($row2 -> signupdate > $fiveMonthsAgo || $row2-> signupdate < $fourMonthsAgo){
+           } elseif ($row2 -> signupdate < $fiveMonthsAgo || $row2-> signupdate > $fourMonthsAgo){
                 $five=$five + 1;
-           }elseif ($row2 -> signupdate > $fourMonthsAgo || $row2-> signupdate < $threeMonthsAgo){
+           }elseif ($row2 -> signupdate < $fourMonthsAgo || $row2-> signupdate > $threeMonthsAgo){
                 $four=$four + 1;
-           }elseif ($row2 -> signupdate > $threeMonthsAgo || $row2-> signupdate < $twoMonthsAgo){
+           }elseif ($row2 -> signupdate < $threeMonthsAgo || $row2-> signupdate > $twoMonthsAgo){
                 $three=$three + 1;
-           }elseif ($row2 -> signupdate > $twoMonthsAgo || $row2-> signupdate < $oneMonthAgo){
+           }elseif ($row2 -> signupdate < $twoMonthsAgo || $row2-> signupdate > $oneMonthAgo){
                 $two=$two + 1;
-            }elseif ($row2->signupdate > $oneMonthAgo){
+            }elseif ($row2->signupdate < $oneMonthAgo){
                 $one=$one +1;
             }
            
