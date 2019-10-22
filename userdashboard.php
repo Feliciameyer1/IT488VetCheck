@@ -25,18 +25,18 @@ include_once('header.php');
         $query2 =new MongoDB\Driver\Query($filter2);
         $rows2= $mng->executeQuery('vetcheck.users', $query2);
          foreach($rows2 as $row2) {
-         
-           if($row2 -> signupdate < $sixMonthsAgo || $row2-> signupdate > $fiveMonthsAgo){
+         $time=strtotime($row2->signupdate);
+           if($time > $sixMonthsAgo || $time < $fiveMonthsAgo){
                 $six= $six+1;
-           } elseif ($row2 -> signupdate < $fiveMonthsAgo || $row2-> signupdate > $fourMonthsAgo){
+           } elseif ($time > $fiveMonthsAgo || $time < $fourMonthsAgo){
                 $five=$five + 1;
-           }elseif ($row2 -> signupdate < $fourMonthsAgo || $row2-> signupdate > $threeMonthsAgo){
+           }elseif ($time > $fourMonthsAgo || $time < $threeMonthsAgo){
                 $four=$four + 1;
-           }elseif ($row2 -> signupdate < $threeMonthsAgo || $row2-> signupdate > $twoMonthsAgo){
+           }elseif ($time > $threeMonthsAgo || $time < $twoMonthsAgo){
                 $three=$three + 1;
-           }elseif ($row2 -> signupdate < $twoMonthsAgo || $row2-> signupdate > $oneMonthAgo){
+           }elseif ($time > $twoMonthsAgo || $time < $oneMonthAgo){
                 $two=$two + 1;
-            }elseif ($row2->signupdate < $oneMonthAgo){
+            }elseif ($time > $oneMonthAgo){
                 $one=$one +1;
             }
            
