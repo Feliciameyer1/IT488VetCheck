@@ -25,8 +25,9 @@ include_once('header.php');
         $query2 =new MongoDB\Driver\Query($filter2);
         $rows2= $mng->executeQuery('vetcheck.users', $query2);
          foreach($rows2 as $row2) {
-         $time=strtotime($row2->signupdate);
+             $time=strtotime($row2->signupdate);
            if($time > $sixMonthsAgo || $time < $fiveMonthsAgo){
+               
                 $six= $six+1;
            } elseif ($time > $fiveMonthsAgo || $time < $fourMonthsAgo){
                 $five=$five + 1;
