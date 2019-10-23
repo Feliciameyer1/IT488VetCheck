@@ -2,6 +2,8 @@
 include_once('header.php');
     $numSatisfied = 0;
     $numUnsatisfied = 0;
+    $competitorSat=0;
+    $competitorUnsat=0;
     $six=0;
     $five=0;
     $four=0;
@@ -50,16 +52,25 @@ include_once('header.php');
         
         $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
         $filter = [
-            'vet' => $_SESSION['_id']
+            
         ];
         $query = new MongoDB\Driver\Query([$filter]);
         $rows = $mng->executeQuery('vetcheck.ratings', $query);
         foreach($rows as $row) {
-            if($row-> satisfaction >= 3){
-                $numSatisfied= $numSatisfied+1;
-        } else{
-            $numUnsatisfied=$numUnsatisfied+1;
-        }
+               if($row-> vet ===$_SESSION['_id']){
+                if($row-> satisfaction >= 3){
+                    $numSatisfied= $numSatisfied+1;
+                } else{
+                    $numUnsatisfied=$numUnsatisfied+1;
+                }
+            } else{
+                if($row-> satisfaction >= 3){
+                    $competitorSat= $competitorSat+1;
+                } else{
+                    $competitorUnsat=$competitorUnsat+1;
+                }
+            }
+          
     }
     }
     catch(MongoDB\Driver\Exception\Exception $e){
@@ -153,13 +164,13 @@ include_once('header.php');
           chart.draw(data, options);
              }
       function drawCompRatChart() {
-            var numSatisfied = eval('<?php echo $numSatisfied; ?>');
-            var numUnsatisfied = eval('<?php echo $numUnsatisfied; ?>');
+            var CompetitorSat = eval('<?php echo $competitorSat; ?>');
+            var CompetitorUnsat = eval('<?php echo $competitorUnsat; ?>');
 
             var data = google.visualization.arrayToDataTable([
                 ['Customer Survey Results', 'Rating'],
-                ['Satisfied Customers', numSatisfied],
-                ['Unsatisfied Customers', numUnsatisfied]
+                ['Satisfied Customers', CompetitorSat],
+                ['Unsatisfied Customers', CompetitorUnsat]
             ]);
 
           var options = {
