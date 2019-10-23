@@ -17,31 +17,26 @@ include_once('header.php');
         $twoMonthsAgo=date("m-1-Y", strtotime("-2 months"));
         $oneMonthAgo=date("m-1-Y", strtotime("-1 months"));
 
-        echo('   6 months ago = '.$sixMonthsAgo);
-        echo('   3 months ago = '.$threeMonthsAgo);
-        echo('   1 months ago = '.$oneMonthAgo);
-
         $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
         $filter2=[
             'role'=> "Patient",
         ];
        
         $query2 =new MongoDB\Driver\Query($filter2);
-        $rows2= $mng->executeQuery('vetcheck.users', $query2);
-         foreach($rows2 as $row2) {
-             $time=strtotime($row2->signupdate);
-           if($time > $sixMonthsAgo || $time < $fiveMonthsAgo){
-               
+        $rows2 = $mng->executeQuery('vetcheck.users', $query2);
+        foreach($rows2 as $row2) {
+            $time = date('m-d-Y',strtotime($row2->signupdate));
+           if ($time >= $sixMonthsAgo && $time < $fiveMonthsAgo){
                 $six= $six+1;
-           } elseif ($time > $fiveMonthsAgo || $time < $fourMonthsAgo){
+           } elseif ($time >= $fiveMonthsAgo && $time < $fourMonthsAgo){
                 $five=$five + 1;
-           }elseif ($time > $fourMonthsAgo || $time < $threeMonthsAgo){
+           }elseif ($time >= $fourMonthsAgo && $time < $threeMonthsAgo){
                 $four=$four + 1;
-           }elseif ($time > $threeMonthsAgo || $time < $twoMonthsAgo){
+           }elseif ($time >= $threeMonthsAgo && $time < $twoMonthsAgo){
                 $three=$three + 1;
-           }elseif ($time > $twoMonthsAgo || $time < $oneMonthAgo){
+           }elseif ($time >= $twoMonthsAgo && $time < $oneMonthAgo){
                 $two=$two + 1;
-            }elseif ($time > $oneMonthAgo){
+            }elseif ($time >= $oneMonthAgo){
                 $one=$one +1;
             }
            
@@ -50,8 +45,7 @@ include_once('header.php');
     catch(MongoDB\Driver\Exception\Exception $e){
         die('error'.$e);
     }
-    
-   
+
     try{
         
         $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");

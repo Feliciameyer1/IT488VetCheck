@@ -9,7 +9,7 @@
     $state = $_POST['state'];
     $zip = $_POST['zip'];
     $password = $_POST['password'];
-    $signupdate = date("M/d/Y");
+    $signupdate = date("m/d/Y");
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
     $user = [
