@@ -10,13 +10,17 @@ include_once('header.php');
     $one=0;
   
     try{
-        $sixMonthsAgo=strtotime("6 months ago");
-        $fiveMonthsAgo=strtotime("5 months ago");
-        $fourMonthsAgo=strtotime("4 months ago");
-        $threeMonthsAgo=strtotime("3 months ago");
-        $twoMonthsAgo=strtotime("2 months ago");
-        $oneMonthAgo=strtotime("1 month ago");
-        
+        $sixMonthsAgo=date("m-d-Y", strtotime("-6 months"));
+        $fiveMonthsAgo=date("m-d-Y", strtotime("-5 months"));
+        $fourMonthsAgo=date("m-d-Y", strtotime("-4 months"));
+        $threeMonthsAgo=date("m-d-Y", strtotime("-3 months"));
+        $twoMonthsAgo=date("m-d-Y", strtotime("-2 months"));
+        $oneMonthAgo=date("m-d-Y", strtotime("-1 months"));
+
+        echo('6 months ago = '.$sixMonthsAgo);
+        echo('3 months ago = '.$threeMonthsAgo);
+        echo('1 months ago = '.$oneMonthAgo);
+
         $mng = new MongoDB\Driver\Manager("mongodb+srv://admin:admin@vetcheck-cdi31.mongodb.net/test?retryWrites=true&w=majority");
         $filter2=[
             'role'=> "Patient",
